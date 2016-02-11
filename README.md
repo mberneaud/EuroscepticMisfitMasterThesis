@@ -6,5 +6,13 @@ This is a work in progress, hence the present information is rudimentary at best
 ## Information on data used
 The data used in my research os collected under the aegis of the [European Election Studies](http://eeshomepage.net/) and is available through the [Data Archive of GESIS](http://www.gesis.org/home/) – Leibniz Institute for the Social Sciences. Data from GESIS is only available after prior registration on the website and is free for most non-commercial research uses. Because of this, data files are excluded from this repo. However, a detailed overview of the data used can be found in [this Markdown file](./Analysis/Data/DataUsed.md). 
 
-## Overview of files 
-*SettingUpFilesAndDirectories.R* is the most basic file. It contains information on the directory structure used in the analysis and how it was created.
+## Overview of files and directories
+_includes information on the structure of this repository for easier navigation_
+### Important directories
+**Analysis**: This directory contains all files related to the analysis carried out in the context of my thesis. 
+**Analysis/Data**: contains all scripts used for loading and gathering the data. Data downloaded for reproduction goes here. Different operations in the data are split into different source files. The file [Master.R](./Analysis/Data/Master.R) is the go to file which links all files together. 
+
+### Important files 
+**SettingUpFilesAndDirectories.R**: this is the most basic file. It contains information on the directory structure used in the analysis and how it was created.
+**DataUsed.md**: This text file contains information on which data I used in my analysis, where and when I obtained it and where I saved it, in order to enable reproduction of the analysis. 
+**Master.R**: links all other files used for data collection and merging together in the correct sequence. 
