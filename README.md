@@ -9,10 +9,10 @@ The data used in my research os collected under the aegis of the [European Elect
 ## Overview of files and directories
 _includes information on the structure of this repository for easier navigation_
 ### Important directories
-**Analysis**: This directory contains all files related to the analysis carried out in the context of my thesis.
-**Analysis/Data**: contains all scripts used for loading and gathering the data. Data downloaded for reproduction goes here. Different operations in the data are split into different source files. The file [Master.R](./Analysis/Data/Master.R) is the go to file which links all files together.
+[Analysis](./Analysis): This directory contains all files related to the analysis carried out in the context of my thesis.
+[Analysis/Data](./Analysis/Data): contains all scripts used for loading and gathering the data. Data downloaded for reproduction goes here. Different operations in the data are split into different source files. The file [Master.R](./Analysis/Data/Master.R) is the go to file which links all files together.
 
 ### Important files
-**[SettingUpFilesAndDirectories.R](./SettingUpFilesAndDirectories.R)**: this is the most basic file. It contains information on the directory structure used in the analysis and how it was created.
-**[DataUsed.md]**: This text file contains information on which data I used in my analysis, where and when I obtained it and where I saved it, in order to enable reproduction of the analysis.
-**[Master.R]**: links all other files used for data collection and merging together in the correct sequence.
+[SettingUpFilesAndDirectories.R](./SettingUpFilesAndDirectories.R): this is the most basic file. It contains information on the directory structure used in the analysis and how it was created.
+[DataUsed.md](./Analysis/Data/DataUsed.md): This text file contains information on which data I used in my analysis, where and when I obtained it and where I saved it, in order to enable reproduction of the analysis.
+[Master.R](./Analysis/Data/Master.R): links all other files used for data collection and merging together in the correct sequence.
