@@ -11,15 +11,9 @@ _includes information on the structure of this repository for easier navigation_
 ### Important directories
 **[Analysis](./Analysis)**: This directory contains all files related to the analysis carried out in the context of my thesis.
 
-<<<<<<< Updated upstream
-**[Analysis/Data](./Analysis/Data)**: contains all scripts used for loading and gathering the data. Data downloaded for reproduction goes here. Different operations in the data are split into different source files. The file [Master.R](./Analysis/Data/Master.R) is the go-to file which links all files together.
-=======
 **[Analysis/Data](./Analysis/Data)**: contains all scripts used for loading and gathering the data. Data downloaded for reproduction goes here. Different operations in the data are split into different source files. The file [Master.R](./Analysis/Data/Master.R) is the go to file which links all files together.
+
 **[ExternalDocumentation](./ExternalDocumentation)**: contains external documentation downloaded from the Internet pertaining to R packages used in the analysis conducted  
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 
 ### Important files
 **[SettingUpFilesAndDirectories.R](./SettingUpFilesAndDirectories.R)**: this is the most basic file. It contains information on the directory structure used in the analysis and how it was created.
