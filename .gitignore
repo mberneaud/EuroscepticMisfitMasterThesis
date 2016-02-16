@@ -2,3 +2,4 @@
 .Rhistory
 .RData
 *.dta
+manifest_apikey.txt
