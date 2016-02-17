@@ -9,10 +9,13 @@ setwd("/home/malte/Git/EuroscepticMisfitMasterThesis")
 # Created initial directory structure
 dir.create("Analysis")
 dir.create("Analysis/Data")
-file.create("Analysis/Data/DataUsed.md")
-file.create("Analyis/Data/Master.R") # since this produced an error, I created
+file.create("Analysis/Data/data_used.md")
+file.create("Analyis/Data/master.R") # since this produced an error, I created
 # the file manually using
 # touch Analysis/Data/Master.R
 dir.create("Analysis/ExploringData")
 dir.create("ExternalDocumentation")
+file.create("./ExternalDocumentation/downloading_documentation.R")
+file.create("./Data/ExploringData/exploring_manifestos_data.R")
+
 
