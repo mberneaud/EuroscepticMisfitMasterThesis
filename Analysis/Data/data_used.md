@@ -8,3 +8,9 @@ This file contains information on all the files that are used in the analysis he
 + [Euromanifesto Project at MZES Mannheim](https://dbk.gesis.org/dbksearch/sdesc2.asp?no=5102&db=e&doi=10.4232/1.5102)
   + Contains data on the positions of parties that participated in EU elections
   + from 1979 to 2009, so excludes last elections in 2014
+  + straight-up codebook starts on page 83 (last chapter)
+  + Interesting variables:
+    + _pro_anti_EU_ : coded from -100 to 100 dimension on pro-vs-contra European integration (-100 anti-EU; 100 pro-EU)
+    + _country_ : factor variable that denotes the country
+    + _country_year_ : concatenated factor from the country ID (obscured by its label in R, but visible in Stata)
+    +
