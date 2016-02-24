@@ -16,3 +16,12 @@ This file contains information on all the files that are used in the analysis he
     + _country_year_ : concatenated factor from the country ID (obscured by its label in R, but visible in Stata)
     + _vote_ : a country's vote share at the national level (which coincides with one of the control variables of my research)
     + _multicult_ : a variable coded from 1:10 expressing whether a party embraces multiculturalism (1) or ethnocentrism (10)
+
+### Data on European election results
+I probably have to use data from the European Election Studies instead of real aggregate vote data, as such data is not really available on the national level going back to 1979 in the form of a real database
+
++ [European Election Studies 1984](https://dbk.gesis.org/dbksearch/sdesc2.asp?no=1321&db=e&doi=10.4232/1.10879) (coded ZA1321 by GESIS)
+  + Because there was no possibility of conducting research for the 1984 EES, the questions were included into two different Eurobarometers.
+  + Interesting variables:
+    + v147 : contains information on the parties respondents voted for in the preceding 1984 elections. There are ~7000 observations of people who voted and not that many parties, so there might be some merit to using that data. Coding of the variables can be found in the corresponding codebook on page 151ff. (page 176ff in the PDF reader)
+    
