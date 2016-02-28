@@ -20,7 +20,8 @@ Data on national parties and their stances on various policy issues is available
   + _multicult_ : a variable coded from 1:10 expressing whether a party embraces multiculturalism (1) or ethnocentrism (10)
 
 ## Data on European election results
-I probably have to use data from the European Election Studies instead of real aggregate vote data, as such data is not really available on the national level going back to 1979 in the form of a real database
+I probably have to use data from the European Election Studies instead of real aggregate vote data, as such data is not really available on the national level going back to 1979 in the form of a real database.
+However, there's the European Election Database, which contains information on all European Parliament elections that have taken place since 1990, which is missing 3 election rounds. Their website can be found [here](http://www.nsd.uib.no/european_election_database/election_types/ep_elections/). Unfortunately, there are some problems with the data. For example, they are not all formatted the same way for all time periods and countries and they are also not all available in CSV. This means additional trouble when trying to work with the data. At least I don't have to collect all the data by hand. 
 
 ### [European Election Studies 1984](https://dbk.gesis.org/dbksearch/sdesc2.asp?no=1321&db=e&doi=10.4232/1.10879) (coded ZA1321 by GESIS)
 + Because there was no possibility of conducting research for the 1984 EES, the questions were included into two different Eurobarometers.
