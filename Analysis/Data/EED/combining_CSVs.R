@@ -19,4 +19,3 @@ combineCSVs <- function(directory = getwd()) {
   }
 }
 
-# Does not work as of yet as the number of variables (parties) differs between countries
