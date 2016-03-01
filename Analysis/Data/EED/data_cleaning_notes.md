@@ -33,3 +33,7 @@ Use import function from rio package, or use Source_xlsx from repmis package (bo
 ### Manual changes in data
 DKEP1999!Download_F1.csv had a last row which was trailing blanks, so I removed it by hand. The same was true for the following files also:
 + CYEP2009!Download_F1.csv
++ IEEP2009!Download_F1.csv
++ NLEP2004!Download_F1.csv
++ **GREP2009!Download_F1.csv** is all kinds of FUBAR'ed and needs adjustment
++ NLEP1999!Download_F1.csv had source information at the bottom

@@ -50,18 +50,3 @@ partyPercent <- function(df, pre = 3, follow = 4) {
   print(df)
 }
 
-#' CSV sorter function
-#' Because my addpercentages function needs the correct number of preceeding columns
-#' without information on party votes and the number of columns following all party 
-#' vote rows
-#' @return returns "sorting of CSVs completed" and no error on successful completion
-#' @export sorts 
-#'
-#' @examples
-sortCSVs <- function() {
-  
-}
-lapply(ATEP1996, class)
-
-
-p
