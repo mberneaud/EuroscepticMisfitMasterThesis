@@ -1,4 +1,4 @@
-# Some random notes on how I combined the data from the the EED CSVs into one data set which I can use for building onto later
+# Some random notes on how I combined the data from the CSVs into one data set which I can use for building onto later
 I loosely group those in the order by which they are carried out in the end.
 
 ## Idea on layout of the data set

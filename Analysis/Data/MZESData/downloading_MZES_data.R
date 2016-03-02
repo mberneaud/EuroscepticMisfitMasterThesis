@@ -6,8 +6,6 @@
 # Messing around and inspecting the "Mannheim documentation of the results of
 # the European Parliament" data set
 
-# Importing needed packages 
-library(foreign)
 
 # Downloading SPSS file
 ifelse(!dir.exists("./Analysis/Data/MZESData/"), dir.create("./Analysis/Data/MZESData/"),
@@ -25,6 +23,3 @@ resultsURL <- "http://www1.mzes.uni-mannheim.de/projekte/euro_elections/Europawa
 download.file(resultsURL, destfile = "./Analysis/Data/MZESData/Results_EER_Release_1.1_en.pdf")
 
 
-# reading dataawriting the dataframe created into a csv file
-MZESdata <- data.frame(read.spss("./Analysis/Data/MZESData/EER_Release_1_1.sav"))
-write.csv(MZESdata, file ="./Analysis/Data/MZESData/EER_Release_1_1.csv")
