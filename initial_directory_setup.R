@@ -2,7 +2,7 @@
 # Eurosceptic Misfit Master Thesis
 # Author: Malte Berneaud-Kötz
 # Date created: 12.02.16
-# Last edited: 27.02.16
+# Last edited: 29.02.16
 # Setting up files and directories for my research project
 # This file contains the source code for setting up my directory tree that
 # is used in the following analysis of the European Election Study Data
@@ -28,3 +28,5 @@ dir.create("Analysis/Data/EED")
 # bunch of directories using bash, unzipped and moved the data
 # finally, I created a citation notice
 
+### Created during the preparation of the data
+dir.create("./Analysis/Data/EED/shortCSV")
