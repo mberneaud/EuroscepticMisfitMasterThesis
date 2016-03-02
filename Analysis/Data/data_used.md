@@ -20,10 +20,15 @@ Data on national parties and their stances on various policy issues is available
   + _multicult_ : a variable coded from 1:10 expressing whether a party embraces multiculturalism (1) or ethnocentrism (10)
 
 ## Data on European election results
-I probably have to use data from the European Election Studies instead of real aggregate vote data, as such data is not really available on the national level going back to 1979 in the form of a real database.
-However, there's the European Election Database, which contains information on all European Parliament elections that have taken place since 1990, which is missing 3 election rounds. Their website can be found [here](http://www.nsd.uib.no/european_election_database/election_types/ep_elections/). Unfortunately, there are some problems with the data. For example, they are not all formatted the same way for all time periods and countries and they are also not all available in CSV. This means additional trouble when trying to work with the data. At least I don't have to collect all the data by hand. 
+
+There's the European Election Database, which contains information on all European Parliament elections that have taken place since 1990, which is missing 3 election rounds. Their website can be found [here](http://www.nsd.uib.no/european_election_database/election_types/ep_elections/). Unfortunately, there are some problems with the data. For example, they are not all formatted the same way for all time periods and countries and they are also not all available in CSV. This means additional trouble when trying to work with the data. At least I don't have to collect all the data by hand.
 
 ### [European Election Studies 1984](https://dbk.gesis.org/dbksearch/sdesc2.asp?no=1321&db=e&doi=10.4232/1.10879) (coded ZA1321 by GESIS)
 + Because there was no possibility of conducting research for the 1984 EES, the questions were included into two different Eurobarometers.
 + Interesting variables:
   + v147 : contains information on the parties respondents voted for in the preceding 1984 elections. There are ~7000 observations of people who voted and not that many parties, so there might be some merit to using that data. Coding of the variables can be found in the corresponding codebook on page 151ff. (page 176ff in the PDF reader)
+
+### [Mannheim documentation of the results of the European elections 1979 to 2004](http://www.mzes.uni-mannheim.de/d7/en/pages/mannheim-documentation-of-the-results-of-the-european-elections-1979-to-2004)
++ Contains the missing data from pre-1990 which I desperately need
++ available only in SPSS data format (.sav), but this can be read by R
++ For the analysis, the dataset is downloaded into 
