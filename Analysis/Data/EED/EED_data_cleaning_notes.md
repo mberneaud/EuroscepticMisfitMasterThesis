@@ -1,6 +1,8 @@
 # Some random notes on how I combined the data from the CSVs into one data set which I can use for building onto later
 I loosely group those in the order by which they are carried out in the end.
 
+**Important: I abandoned this path of inquiry as I found a way better, comprehensive database in "documentation of the Results of the European Parliament Elections 1979 to 2004" hosted on the MZES website**
+
 ## Idea on layout of the data set
 Variables:
 + country

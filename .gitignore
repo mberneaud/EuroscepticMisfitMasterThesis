@@ -2,3 +2,6 @@
 .Rhistory
 *.dta
 manifesto_apikey.txt
+# SPSS data files
+*.sav
+*.por
