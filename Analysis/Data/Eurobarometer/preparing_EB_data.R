@@ -12,12 +12,12 @@ library(haven)
 library(dplyr)
 
 ###################
-# EB 1979 
+# EB 1979
 ###################
 
 EB1979 <- read_sav("./Analysis/Data/Eurobarometer/Spring 1979/ZA1036_v1-0-1.sav")
 
-# Exploring the data set 
+# Exploring the data set
 str(EB1979)
 dim(EB1979)
 
@@ -34,7 +34,7 @@ sum(is.na(EB1979$v94))  # 699 missing values
 EB1979 <- select(EB1979, isocntry, v8, v93:v96)
 
 # renaming columns for easier merging
-names(EB1979) <- c("isocntry", "nation", "integration", "membership", 
+names(EB1979) <- c("isocntry", "nation", "integration", "membership",
                    "common.market", "integration.speed")
 # creating year variable
 EB1979$year <- 1979
@@ -82,5 +82,3 @@ EB2004 <- read_sav("Analysis/Data/Eurobarometer/Fall 2004/ZA4229_v1-1-0.sav")
 EB2004 <- select(EB2004, v7, v6, v98, v99, v102)
 names(EB2004) <- c("isocntry", "nation", "membership", "benefit", "image")
 EB2004$year <- 2004
-
-
