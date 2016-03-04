@@ -1,6 +1,26 @@
-# Lists the variables that are measuring Eurosceptic attitudes in the EB data sets
+# Lists the variables that need to be extracted from the EB data sets
 
 #### Spring 1979
+**v7 isocntry**
+FR = France
+etc.
+
+**v8 - NATION**
+NATION (OF INTERVIEW)
+1 FRANCE
+2 BELGIUM
+3 NETHERLANDS
+4 GERMANY
+5 ITALY
+6 LUXEMBOURG
+7 DENMARK
+8 IRELAND
+9 GREAT BRITAIN
+10 NORTHERN IRELAND
+
+**No year variable included**
+I need to code it myself with EB1979$year <- 1979
+
 **v93 Q.221**
 IN GENERAL, ARE YOU FOR OR AGAINST EFFORTS BEING MADE TO UNIFY WESTERN EUROPE? (IF FOR) ARE YOU VERY
 MUCH FOR THIS, OR ONLY TO SOME EXTENT? (IF AGAINST) ARE YOU ONLY TO SOME EXTENT AGAINST, OR VERY
