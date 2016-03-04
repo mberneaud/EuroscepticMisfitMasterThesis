@@ -37,3 +37,6 @@ EUMZ <- merge(EUmanifesto, MZESdata, by = c("year", "party"))
 
 # Writing the file to disk for safety
 write.csv(EUMZ, "./Analysis/Merge/EUMZ_merge.csv")
+
+source("./Analysis/Data/Eurobarometer/preparing_EB_data.R", print.eval = F,
+       echo = F)
