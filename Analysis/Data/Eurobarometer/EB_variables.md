@@ -1,5 +1,7 @@
 # Lists the variables that need to be extracted from the EB data sets
 
+Below are the variables which I extracted from the Eurobarometers and pasted together in a single Eurobarometer Euroscepticism file for aggregation of Eurosceptic attitudes first and
+
 #### Spring 1979
 **v7 isocntry**
 FR = France
@@ -21,16 +23,6 @@ NATION (OF INTERVIEW)
 **No year variable included**
 I need to code it myself with EB1979$year <- 1979
 
-**v93 Q.221**
-IN GENERAL, ARE YOU FOR OR AGAINST EFFORTS BEING MADE TO UNIFY WESTERN EUROPE? (IF FOR) ARE YOU VERY
-MUCH FOR THIS, OR ONLY TO SOME EXTENT? (IF AGAINST) ARE YOU ONLY TO SOME EXTENT AGAINST, OR VERY
-MUCH AGAINST?
-0 DK; NA
-1 FOR - VERY MUCH
-2 FOR - TO SOME EXTENT
-3 AGAINST - TO SOME EXTENT
-4 AGAINST - VERY MUCH
-
 **v94 Q.222**
 GENERALLY SPEAKING, DO YOU THINK THAT (COUNTRY'S) MEMBERSHIP OF THE COMMON MARKET IS A GOOD THING,
 A BAD THING, OR NEITHER GOOD NOR BAD?
@@ -46,15 +38,6 @@ GOOD NOR BAD THING IN THE LIGHT OF (COUNTRY'S) FUTURE IN THE NEXT 10 OR 15 YEARS
 1 GOOD THING
 2 NEITHER GOOD NOR BAD
 3 BAD THING
-
-**v96 Q.224**
-SOME PEOPLE CONSIDER THE COMMON MARKET AS BEING A FIRST STEP TOWARDS A CLOSER UNION BETWEEN THE
-MEMBER STATES. PERSONALLY, DO YOU YOURSELF THINK THE MOVEMENT TOWARDS THE UNIFICATION OF EUROPE
-SHOULD BE SPEEDED UP, SLOWED DOWN, OR CONTINUED AS IT IS AT PRESENT?
-0 DK; NA
-1 SPEEDED UP
-2 CONTINUED AS IT IS AT PRESENT
-3 SLOWED DOWN
 
 #### Spring 1984
 **v5 - NATION I (UNITED KINGDOM)**
@@ -74,14 +57,6 @@ BRITAIN, SEE VAR. NO. 7.
 9 UNITED KINGDOM
 10 GREECE
 
-**v170 - Q337 EUROP UNIFICATION - FOR/AGAINST**
-Q.337
-IN GENERAL, ARE YOU FOR OR AGAINST EFFORTS BEING MADE TO UNIFY WESTERN EUROPE?
-0 DK; NA
-1 FOR - VERY MUCH
-2 FOR - TO SOME EXTENT
-3 AGAINST - TO SOME EXTENT
-4 AGAINST - VERY MUCH
 
 **v189 - Q341 EC MEMBERSHIP - GOOD/BAD**
 Q.341
@@ -123,14 +98,6 @@ UNIQUE NUMERIC CODE IS ASSIGNED TO EACH OF THE 12 EUROPEAN COMMUNITY COUNTRIES.
 11 SPAIN
 12 PORTUGAL
 
-**v272 Q.373**
-ASK IN ALL COUNTRIES
-IN GENERAL, ARE YOU FOR OR AGAINST EFFORTS BEING MADE TO UNIFY WESTERN EUROPE?
-0 DK/NA
-1 FOR - VERY MUCH
-2 FOR - TO SOME EXTENT
-3 AGAINST - TO SOME EXTENT
-4 AGAINST - VERY MUCH
 
 **v273 Q.374**
 GENERALLY SPEAKING, DO YOU THINK THAT (YOUR COUNTRY'S) MEMBERSHIP OF THE EUROPEAN COMMUNITY
@@ -195,25 +162,6 @@ the ( EC & EU (EC) ) ?
 2 Not benefited
 3 DK
 
-**v64 - Q22 EUROP UNIFICATION SPEED - PREFERNCE**
-Q.21
-In your opinion, how is the ( EC & EU (EC) ), the European Unification advancing nowadays ? Please look at these people.
-(SHOW CARD)
-No. 1 is standing still, No. 7 is running as fast as possible. Choose the one which best corresponds with your opinion of the ( EC & EU
-(EC) ), European Unification.
-Q.22
-And which corresponds best to what you would like ?
-(SHOW SAME CARD)
-0 NA
-1 1 STANDING STILL
-2 2
-3 3
-4 4
-5 5
-6 6
-7 7 AS FAST AS POSSIBLE
-8 DK
-9 INAP, not available for Finland, coded 16 in V7
 
 #### Spring 1999
 **isocntry - NATION - ALL SAMPLES ISO 3166 (CROSSTABULATION VARIABLE)**
@@ -265,44 +213,8 @@ the European Union ?
 3 DK
 
 
-#### Spring 2004
-**isocntry - NATION - ALL SAMPLES ISO 3166 (CROSSTABULATION VARIABLE)**
-NATION - ALL SAMPLES ISO 3166 (CROSSTABULATION VARIABLE)
-All surveyed countries and regions, i.e. including separate samples for East- / West-Germany, Great Britain / Northern Ireland, and
-the Turkish Cypriot Community (TCC), are coded in accordance with the ISO 3166-1-alpha-2 country code, if available. ISO 3166-2 is
-applied for the United Kingdom subdivisions. ISO standard codes are not available for the “historical” East / West subdivision of
-Germany (DE-E / DE-W) and for the Turkish Cypriot Community in northern Cyprus (CY-TCC), the internationally not recognized
-“Turkish Republic of Northern Cyprus”.
 
-**v60 - Q8 EU MEMBERSHIP - GOOD/BAD**
-Let's continue with some questions on the European Union.
-Q.8
-Generally speaking, do you think that (OUR COUNTRY)'s membership of the European Union is...?
-(READ OUT)
-1 Good thing
-2 Neither good nor bad (questionnaire code 3)
-3 Bad thing (questionnaire code 2)
-4 DK
-
-**v61 - Q9 EU MEMBERSHIP - CNTRY BENEFIT**
-Q.9
-Taking everything into consideration, would you say that (OUR COUNTRY) has on balance benefited or not from being a member of
-the European Union?
-1 Benefited
-2 Not benefited
-3 DK
-
-**v62 - Q10 EU MEMBERSHIP - IMAGE**
-Q.10
-In general, does the European Union conjure up for you a very positive, fairly positive, neutral, fairly negative or very negative image?
-1 Very positive
-2 Fairly positive
-3 Neutral
-4 Fairly negative
-5 Very negative
-6 DK
-
-# Fall 2014
+# Fall 2004
 _I used the fall Eurobarometer just once because the 2004 wave of Member States were not yet included in the summer barometer_
 
 **v6 - NATION - ALL SAMPLES**
@@ -373,14 +285,3 @@ the European Union?
 9 Inap. (coded 29 to 33 in V6)
 Note:
 Last trend: EB61, Q.9
-
-**v102 - Q13 EU MEMBERSHIP - IMAGE**
-Q.13
-ASK ALL
-In general, does the European Union conjure up for you a very positive, fairly positive, neutral, fairly negative or very negative image?
-1 Very positive
-2 Fairly positive
-3 Neutral
-4 Fairly negative
-5 Very negative
-6 DK
