@@ -12,6 +12,8 @@ I used the following Eurobarometers in my Analysis
 + [April 1984](https://dbk.gesis.org/dbksearch/sdesc2.asp?no=1320&db=e&doi=10.4232/1.10878)
 + [March/April 1989](https://dbk.gesis.org/dbksearch/SDESC2.ASP?no=1750&db=e&search=&search2=&tab=0&notabs=&nf=1&af=&ll=10)
 + [March-May 1994](https://dbk.gesis.org/dbksearch/SDESC2.ASP?no=2490&db=e&search=&search2=&tab=0&notabs=&nf=1&af=&ll=10)
++ [November-December 1995](https://dbk.gesis.org/dbksearch/SDesc2.asp?ll=10&notabs=&af=&nf=&search=&search2=&db=E&no=2690)
++ []()
 + [March-May 1999](https://dbk.gesis.org/dbksearch/SDESC2.ASP?no=3171&db=e&search=&search2=&tab=0&notabs=&nf=1&af=&ll=10)
 + [October-November 2004](https://dbk.gesis.org/dbksearch/SDesc2.asp?ll=10&notabs=&af=&nf=&search=&search2=&db=E&no=4229)
 
@@ -28,10 +30,10 @@ There's the European Election Database, which contains information on all Europe
 
 ## Data on European parties and their policy stances
 
-##### [Manifesto Project at WZB Berlin](https://manifesto-project.wzb.eu/)
+#### [Manifesto Project at WZB Berlin](https://manifesto-project.wzb.eu/)
 Data on national parties and their stances on various policy issues is available through the API accessed via the `manifestoR` package.This requires an API-key, which can be downloaded after registration.
 
-##### [Euromanifesto Project at MZES Mannheim](https://dbk.gesis.org/dbksearch/sdesc2.asp?no=5102&db=e&doi=10.4232/1.5102)
+#### [Euromanifesto Project at MZES Mannheim](https://dbk.gesis.org/dbksearch/sdesc2.asp?no=5102&db=e&doi=10.4232/1.5102)
 **the .dta file obtained from the link above goes into the Data/Analysis/Euromanifesto folder**
 + Contains data on the positions of parties that participated in EU elections
 + from 1979 to 2009, so excludes last elections in 2014

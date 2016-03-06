@@ -5,3 +5,4 @@ manifesto_apikey.txt
 # SPSS data files
 *.sav
 *.por
+*.zip

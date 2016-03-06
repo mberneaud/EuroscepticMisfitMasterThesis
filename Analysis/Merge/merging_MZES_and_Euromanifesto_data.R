@@ -2,7 +2,7 @@
 # Eurosceptic Misfit Master Thesis
 # Author: Malte Berneaud-Kötz
 # Date created: 02.03.16
-# Last edited: 02.03.16
+# Last edited: 06.03.16
 # Contains the source code I used to clean the transform the Euromanifesto data
 # to make it fit in with the MZES data set
 
@@ -38,5 +38,8 @@ EUMZ <- merge(EUmanifesto, MZESdata, by = c("year", "party"))
 # Writing the file to disk for safety
 write.csv(EUMZ, "./Analysis/Merge/EUMZ_merge.csv")
 
-source("./Analysis/Data/Eurobarometer/preparing_EB_data.R", print.eval = F,
-       echo = F)
+# for later merge I use the year.x variable as it does not differentiate between 
+# Northern Ireland and the rest of the UK
+
+
+

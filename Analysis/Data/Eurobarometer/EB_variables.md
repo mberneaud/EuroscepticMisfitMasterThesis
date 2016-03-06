@@ -162,6 +162,96 @@ the ( EC & EU (EC) ) ?
 2 Not benefited
 3 DK
 
+#### Eurobarometer 44.1 November-December 1995 for Sweden election
+**v5 NATION I (UNITED KINGDOM)**
+Nation of interview I
+Fifteen EC countries including separate samples for East and West Germany and with the addition of
+Norway
+1 France
+2 Belgium
+3 The Netherlands
+4 Germany
+5 Italy
+6 Luxembourg
+7 Denmark
+8 Ireland
+9 United Kingdom
+10 Greece
+11 Spain
+12 Portugal
+13 Germany - east
+14 Norway
+15 Finland
+16 Sweden
+17 Austria
+
+**v67 Q6 EU MEMBERSHIP - GOOD/BAD**
+Q.6
+Generally speaking, do you think that (OUR COUNTRY'S) membership of the European Union is ...?
+(READ OUT)
+in Norway (NO):
+Generally speaking, do you think that a future Norwegian membership of the European Union is ...?
+(READ OUT)
+0 NA
+1 A good thing
+2 Neither (questionnaire category 3)
+3 A bad thing (questionnaire category 2)
+4 DK
+Note:
+Last trend: EB44.0 Q.6
+
+**v68 Q7 EU MEMBERSHIP - CNTRY BENEFIT**
+Q.7
+Taking everything into consideration, would you say that (OUR COUNTRY) has on balance benefited or not,
+from being a member of the European Union (European Community)?
+in Norway (NO):
+Taking everything into consideration, would you say that Norway would on balance benefit or not, from being
+a member of the European Union (European Community)?
+0 NA
+1 Benefited
+2 Not benefited
+3 DK
+
+#### EB 45.1 for election in Austria and Finland on 13 and 20 October
+**v6 - NATION I (UNITED KINGDOM)**
+Nation of interview I
+Fifteen EU countries including separate samples for East and West Germany
+1 France
+2 Belgium
+3 Netherlands
+4 Germany West
+5 Italy
+6 Luxembourg
+7 Denmark
+8 Ireland
+9 United Kingdom
+10 Greece
+11 Spain
+12 Portugal
+13 Germany East
+14 Norway (not included)
+15 Finland
+16 Sweden
+17 Austria
+
+**v39 - Q4 EU MEMBERSHIP - GOOD/BAD**
+Q.4
+Generally speaking, do you think that (OUR COUNTRY'S) membership of the European Union is ...?
+(READ OUT)
+0 NA
+1 A good thing
+2 Neither good nor bad
+3 A bad thing
+4 DK
+
+**v40 - Q5 EU MEMBERSHIP - CNTRY BENEFIT**
+Q.5
+Taking everything into consideration, would you say that (OUR COUNTRY) has on balance benefited or not from being member of the
+European Union?
+0 NA
+1 Benefited
+2 Not benefited
+3 DK
 
 #### Spring 1999
 **isocntry - NATION - ALL SAMPLES ISO 3166 (CROSSTABULATION VARIABLE)**
