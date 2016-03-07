@@ -13,7 +13,8 @@ I used the following Eurobarometers in my Analysis
 + [March/April 1989](https://dbk.gesis.org/dbksearch/SDESC2.ASP?no=1750&db=e&search=&search2=&tab=0&notabs=&nf=1&af=&ll=10)
 + [March-May 1994](https://dbk.gesis.org/dbksearch/SDESC2.ASP?no=2490&db=e&search=&search2=&tab=0&notabs=&nf=1&af=&ll=10)
 + [November-December 1995](https://dbk.gesis.org/dbksearch/SDesc2.asp?ll=10&notabs=&af=&nf=&search=&search2=&db=E&no=2690)
-+ []()
++ [April-May 1996](https://dbk.gesis.org/dbksearch/SDesc2.asp?ll=10&notabs=&af=&nf=&search=&search2=&db=E&no=2831)
+  + [Source on dates of AT and FI elections](http://www.europarl.europa.eu/press/sdp/backg/en/1996/b961007.htm)
 + [March-May 1999](https://dbk.gesis.org/dbksearch/SDESC2.ASP?no=3171&db=e&search=&search2=&tab=0&notabs=&nf=1&af=&ll=10)
 + [October-November 2004](https://dbk.gesis.org/dbksearch/SDesc2.asp?ll=10&notabs=&af=&nf=&search=&search2=&db=E&no=4229)
 
