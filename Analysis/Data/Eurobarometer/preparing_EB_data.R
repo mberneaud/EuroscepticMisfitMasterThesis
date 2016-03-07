@@ -145,6 +145,9 @@ EBAgg <- summarise(EBGroup, gen.EUS = mean(gen.EUS, na.rm = TRUE),
 # Republic of Northern Cyprus, Turkey and Croatia
 EBAgg <- head(EBAgg, n = -5)
 
+# filtering out Norway
+EBAgg <- filter(EBAgg, nation != 14)
+
 # Transforming the values for EUS into percent values
 EBAgg <- mutate(EBAgg, gen.EUS = gen.EUS * 100, inst.EUS = inst.EUS * 100)
 
@@ -152,12 +155,16 @@ EBAgg <- mutate(EBAgg, gen.EUS = gen.EUS * 100, inst.EUS = inst.EUS * 100)
 # note to self: coded one observation on Norway as 98, needs to be removed
 # Note to self: Eurobarometer data for Sweden and Austria is missing in the Spring
 # 1994 EB, maybe I should use data from fall also. 
-library(lessR)
-oldvars <- c(1:12, 14:27)
-newvars <- c(31, 21, 22, 41, 32, 23, 13, 53, 51, 34, 33, 35, 98, 14, 11, 42, 36,
-             82, 93, 86, 87, 88, 37, 92, 96, 97)
-rec(nation, old = oldvars, new = newvars, data = EBAgg)
 
-                                         
+# see recoding_specification textfile in Eurobarometer folder for conversions
+oldvars <- c(1:12, 15:27)
+newvars <- c(31, 21, 22, 41, 32, 23, 13, 53, 51, 34, 33, 35, 14, 11, 42, 36,
+             82, 93, 86, 87, 88, 37, 92, 96, 97)
+
+
+for(i in seq_along(oldvars)) {
+  EBAgg$nation[EBAgg$nation == oldvars[i]] <- newvars[i]
+}
+
 # Saving the data frame for later as a .csv file
 write.csv(EBAgg, "Analysis/Merge/EB_agg_EUS.csv")
