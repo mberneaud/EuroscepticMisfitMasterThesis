@@ -2,7 +2,7 @@
 # Eurosceptic Misfit Master Thesis
 # Author: Malte Berneaud-Kötz
 # Date created: 02.03.16
-# Last edited: 06.03.16
+# Last edited: 08.03.16
 # Preparing Eurobarometer data for merge
 # contains the code I used to create a dataset with information on instrumental
 # and political Euroscepticism
@@ -115,17 +115,46 @@ for(i in 1:nrow(EB2004)){
 }
 
 ####################
+# EB 2009
+####################
+EB2009 <- read_sav("Analysis/Data/Eurobarometer/January-February 2009/ZA4971_v4-0-0.sav")
+EB2009 <- select(EB2009, v7, v6, v181, v182)
+names(EB2009) <- c("isocntry", "nation", "membership", "benefit")
+EB2009$year <- 2009
+
+# Repeating the Spiel of the 2004 variables 
+# Fixing the time series by coding in Northern Ireland with the rest of the UK
+EB2009$nation[EB2009$nation == 10] <- 9
+
+# Coding Eastern Germany in with the rest of Germany using its 1999 nation code
+EB2009$nation[EB2009$nation == 14] <- 4
+
+# And then adjusted the values for all the other variables to match the previous 
+# Eurobarometers
+for(i in 1:nrow(EB2009)){
+  if(EB2009$nation[i] >= 11) {
+    EB2009$nation[i] <- EB2009$nation[i] - 1
+  } else {
+    next()
+  }
+}
+
+
+####################
 # Binding data frames together
 ####################
 
 EBMerge <- rbind(EB1979, EB1984, EB1989, EB1994, EB1995S, EB1996AF, EB1999,
-                 EB2004)
+                 EB2004, EB2009)
 
 # Creating a dummy variable for generally Eurosceptic respondents
 EBMerge$gen.EUS <- ifelse(EBMerge$membership == 3, 1, 0)
 
 # Creating a dummy variable for instrumentally Eurosceptic respondents
 EBMerge$inst.EUS <- ifelse(EBMerge$membership == 2, 1, 0)
+
+# Checking correlation of instrumental and general EUS
+cor.EUS <- cor(EBMerge$gen.EUS, EBMerge$inst.EUS, use = "complete.obs")
 
 ###################
 # Aggregation of the data
@@ -142,8 +171,8 @@ EBAgg <- summarise(EBGroup, gen.EUS = mean(gen.EUS, na.rm = TRUE),
                    inst.EUS = mean(inst.EUS, na.rm = TRUE))
 
 # Dropping last five rows as they contain data for Romania, Bulgaria,
-# Republic of Northern Cyprus, Turkey and Croatia
-EBAgg <- head(EBAgg, n = -5)
+# Republic of Northern Cyprus, Turkey, Croatia and FYROM
+EBAgg <- filter(EBAgg, nation <= 29)
 
 # filtering out Norway
 EBAgg <- filter(EBAgg, nation != 14)
@@ -151,20 +180,26 @@ EBAgg <- filter(EBAgg, nation != 14)
 # Transforming the values for EUS into percent values
 EBAgg <- mutate(EBAgg, gen.EUS = gen.EUS * 100, inst.EUS = inst.EUS * 100)
 
+# Correlation of EUS variables in aggregated data
+cor.agg.EUS <- cor(EBAgg$inst.EUS, EBAgg$gen.EUS)
+
 # Recoding country names to match with Euromanifesto encoding
 # note to self: coded one observation on Norway as 98, needs to be removed
 # Note to self: Eurobarometer data for Sweden and Austria is missing in the Spring
 # 1994 EB, maybe I should use data from fall also. 
 
 # see recoding_specification textfile in Eurobarometer folder for conversions
-oldvars <- c(1:12, 15:27)
+oldvars <- c(1:12, 15:29)
 newvars <- c(31, 21, 22, 41, 32, 23, 13, 53, 51, 34, 33, 35, 14, 11, 42, 36,
-             82, 93, 86, 87, 88, 37, 92, 96, 97)
+             82, 93, 86, 87, 88, 37, 92, 96, 97, 80, 93)
 
 
 for(i in seq_along(oldvars)) {
   EBAgg$nation[EBAgg$nation == oldvars[i]] <- newvars[i]
 }
+
+# creating a country_year variable for merging
+EBAgg$country_year <- paste0(EBAgg$nation, "_", substr(EBAgg$year, 3, 4))
 
 # Saving the data frame for later as a .csv file
 write.csv(EBAgg, "Analysis/Merge/EB_agg_EUS.csv")

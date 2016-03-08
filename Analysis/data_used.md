@@ -7,7 +7,7 @@ This file contains information on all the files that are used in the analysis he
 Data is available through the [Data Archive of GESIS](http://www.gesis.org/home/) – Leibniz Institute for the Social Sciences. Data from GESIS is only available after prior registration on the website and is free for most non-commercial research uses.
 
 ### [Eurobarometer](https://dbk.gesis.org/dbksearch/PDESC2.asp?no=0001&search=&search2=&DB=e&tab=0&notabs=&nf=1&af=&ll=10)
-I used the following Eurobarometers in my Analysis
+I used the following Eurobarometers in my Analysis. All of them can be downloaded on the GESIS homepage after registration. All these files were put into the respective folders (named "Spring 1979 to Spring 2004") in the Data/Eurobarometer sub-folder for conducting the analysis. Without "reproducing" this step by hand, the files in my Analysis won't work.
 + [April 1979](https://dbk.gesis.org/dbksearch/SDESC2.ASP?no=1036&db=e&search=&search2=&tab=0&notabs=&nf=1&af=&ll=10)
 + [April 1984](https://dbk.gesis.org/dbksearch/sdesc2.asp?no=1320&db=e&doi=10.4232/1.10878)
 + [March/April 1989](https://dbk.gesis.org/dbksearch/SDESC2.ASP?no=1750&db=e&search=&search2=&tab=0&notabs=&nf=1&af=&ll=10)
@@ -17,8 +17,9 @@ I used the following Eurobarometers in my Analysis
   + [Source on dates of AT and FI elections](http://www.europarl.europa.eu/press/sdp/backg/en/1996/b961007.htm)
 + [March-May 1999](https://dbk.gesis.org/dbksearch/SDESC2.ASP?no=3171&db=e&search=&search2=&tab=0&notabs=&nf=1&af=&ll=10)
 + [October-November 2004](https://dbk.gesis.org/dbksearch/SDesc2.asp?ll=10&notabs=&af=&nf=&search=&search2=&db=E&no=4229)
++ [January-February 2009](https://dbk.gesis.org/dbksearch/SDesc2.asp?ll=10&notabs=&af=&nf=&search=&search2=&db=E&no=4971)
 
-All these files were put into the respective folders (named "Spring 1979 to Spring 2004") in the Data/Eurobarometer sub-folder
+
 
 ## Data on European election results on the national level
 There's the European Election Database, which contains information on all European Parliament elections that have taken place since 1990, which is missing 3 election rounds. Their website can be found [here](http://www.nsd.uib.no/european_election_database/election_types/ep_elections/). Unfortunately, there are some problems with the data. For example, they are not all formatted the same way for all time periods and countries and they are also not all available in CSV. This means additional trouble when trying to work with the data. At least I don't have to collect all the data by hand.

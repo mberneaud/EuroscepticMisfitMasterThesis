@@ -375,3 +375,72 @@ the European Union?
 9 Inap. (coded 29 to 33 in V6)
 Note:
 Last trend: EB61, Q.9
+
+# Jan-Feb 2009
+**v7 - NATION - ALL SAMPLES ISO 3166**
+NATION – ALL SAMPLES ISO 3166
+All surveyed countries and regions, i.e. including separate samples for East- / West-Germany, Great Britain / Northern Ireland, and the
+Turkish Cypriot Community (TCC), are coded in accordance with the ISO 3166-1-alpha-2 country code, if available. ISO 3166-2 is applied for
+the United Kingdom subdivisions. ISO standard codes are not available for the “historical” East / West subdivision of Germany (DE-E / DE-
+W) and for the Turkish Cypriot Community in northern Cyprus (CY-TCC), the internationally not recognized “Turkish Republic of Northern
+Cyprus”.
+
+**v6 - NATION - ALL SAMPLES**
+NATION - ALL SAMPLES
+All samples including separate samples for East and West Germany and for Great Britain and Northern Ireland.
+1 France
+2 Belgium
+3 The Netherlands
+4 Germany West
+5 Italy
+6 Luxembourg
+7 Denmark
+8 Ireland
+9 Great Britain
+10 Northern Ireland
+11 Greece
+12 Spain
+13 Portugal
+14 Germany East
+15 Norway (not included)
+16 Finland
+17 Sweden
+18 Austria
+19 Cyprus (Republic)
+20 Czech Republic
+21 Estonia
+22 Hungary
+23 Latvia
+24 Lithuania
+25 Malta
+26 Poland
+27 Slovakia
+28 Slovenia
+29 Bulgaria
+30 Romania
+31 Turkey
+32 Croatia
+33 Cyprus (CY-TCC)
+34 Macedonia (FYROM)
+
+
+**v181 - QA6A EU MEMBERSHIP - GOOD/BAD**
+Q.A6A
+ASK Q.A6A AND Q.A7A ONLY in EU27 – MK, TR and HR GO TO Q.A6B – CY-TCC GO TO Q.A6C
+Generally speaking, do you think that (OUR COUNTRY)'s membership of the European Union is...?
+(READ OUT)
+1 A good thing
+2 Neither good nor bad (questionnaire code 3)
+3 A bad thing (questionnaire code 2)
+4 DK
+9 Inap. not EU27 (not coded 1 to 30 in V6)
+
+**v182 - QA7A EU MEMBERSHIP - COUNTRY BENEFIT**
+ASK Q.A6A AND Q.A7A ONLY in EU27
+Q.A7A
+Taking everything into account, would you say that (OUR COUNTRY) has on balance benefited or not from being a member of the European
+Union?
+1 Benefited
+2 Not benefited
+3 DK
+9 Inap. not EU27 (not coded 1 to 30 in V6)
