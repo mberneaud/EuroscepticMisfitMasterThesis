@@ -44,6 +44,9 @@ Merge1$EUS.party <- ifelse(Merge1$pro_anti_EU <=
 # Creating vote aggregates for Eurosceptic parties by country
 ###############################################################
 
+# filtering out 18 observations where vote is -777
+Merge1 <- filter(Merge1, vote != -777 )
+
 Merge1$EUS.vote <- Merge1$EUS.party * Merge1$vote
 Merge1 <- group_by(Merge1, country_year)
 sum.EUS.vote <- summarise(Merge1, sum.EUS.vote = sum(EUS.vote, na.rm = TRUE))
@@ -61,27 +64,42 @@ Merge1 <- merge(Merge1, sum.EUS.vote, by = "country_year")
 
 Merge1$CEE <- ifelse(Merge1$country >= 80, 1, 0)
 
+# Writing to file for easier re-start of analysis if needed
+write.csv(Merge1, "./Analysis/Merge/Merge1.csv")
+
+
 ##################################
 # Computing polarisation index
 ##################################
 
-# transforming the left-right score to have values that are all above 0
-Merge1 <- mutate(Merge1, rile_mrg = rile_mrg + 100)
 
-# Calculating Party System mean left-right score 
+# filtering out invalid obersvations in left
+Merge1 <- filter(Merge1, left != -777 & left != 99)
+
+
+# Calculating Party System mean left-right score for country years
 Merge1 <- group_by(Merge1, country_year)
-
-rile.mean <- summarise(Merge1, rile.mean = mean(rile_mrg, na.rm = TRUE))
-
-# Creating polarisation variable in rile.mean
-rile.mean$pola.index <- NULL  # Creating empty vector to fill with data
-for(i in 1:nrow(rile.mean)) {
-  rile.mean$pola.index[i] <- sqrt(sum(rile.mean$vote[i]*((rile.mean$rile_mrg[i]-rile.mean$rile.mean[i])/100)^2))
-}
+left.mean <- summarise(Merge1, left.mean = mean(left, na.rm = TRUE))
 
 # Merging that into the dataframe
-Merge1 <- merge(Merge1, rile.mean, by = "country_year")
+Merge1 <- merge(Merge1, left.mean, by = "country_year")
 
 
+# Calculating part of the polarisation index
+Merge1$pola.part <- NULL
+for(i in 1:nrow(Merge1)) {
+  Merge1$pola.part[i] <- Merge1$vote[i] * ((Merge1$left[i]-Merge1$left.mean[i])/5)^2
+}
+
+# summarizing pola.parts by country_years
+Merge1 <- group_by(Merge1, country_year)
+
+pola.sum <- summarise(Merge1, pola.sum = sum(pola.part, na.rm = TRUE))
+pola.sum$pola.index <- sqrt(pola.sum$pola.sum)
 
 
+# Merging polarization index for country years back into main merge data frame
+Merge1 <- merge(Merge1, pola.sum, by = "country_year")
+
+# Milestone data set!
+write.csv(Merge1, "Analysis/Merge/Merge1.csv")

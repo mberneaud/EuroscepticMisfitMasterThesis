@@ -21,3 +21,17 @@ class(MZESdata$year)
 class(EUmanifesto$party)
 class(MZESdata$party)
 
+# Tests prior to coding the Polarisation Index 
+
+table(Merge1$vote) # has 18 -777 in it still
+table(Merge1$rile_mrg)  # No zeros in there
+table(Merge1$rile.mean) # also no zeros
+table(Merge1$rile_mrg - Merge1$rile.mean) # there are 4 zeros in there 
+
+# Checking out coder rating right-left scale as a possible alternative
+table(Merge1$left)
+
+
+# Miscellaneous stuff
+
+select(Merge1, vote, left, left.mean)  %>% filter(country_year == "11_09") %>% table()
