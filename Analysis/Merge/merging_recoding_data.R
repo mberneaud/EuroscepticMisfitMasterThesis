@@ -102,4 +102,36 @@ pola.sum$pola.index <- sqrt(pola.sum$pola.sum)
 Merge1 <- merge(Merge1, pola.sum, by = "country_year")
 
 # Milestone data set!
-write.csv(Merge1, "Analysis/Merge/Merge1.csv")
+write.csv(Merge1, "Analysis/Merge/merge_polarisation.csv")
+
+############################################################################
+
+# Trying to recreate the same thing with the computed rile values instead of 
+# left which is based on coder rating 
+
+# transforming rile_mrg to have only positve values
+Merge1 <- mutate(Merge1, rile_mrg = rile_mrg +100)
+
+# Calculating Party System mean left-right score for country years
+Merge1 <- group_by(Merge1, country_year)
+rile.mean <- summarise(Merge1, rile.mean = mean(rile_mrg, na.rm = TRUE))
+
+# Merging that into the dataframe
+Merge1 <- merge(Merge1, rile.mean, by = "country_year")
+
+
+# Calculating part of the polarisation index
+Merge1$rile.pola.part <- NULL
+for(i in 1:nrow(Merge1)) {
+  Merge1$rile.pola.part[i] <- Merge1$vote[i] * ((Merge1$rile_mrg[i]-Merge1$rile.mean[i])/50)^2
+}
+
+# summarizing pola.parts by country_years
+Merge1 <- group_by(Merge1, country_year)
+
+rile.sum <- summarise(Merge1, rile.sum = sum(rile.pola.part, na.rm = TRUE))
+rile.sum$rile.pola.index <- sqrt(rile.sum$rile.sum)
+
+
+# Merging polarization index for country years back into main merge data frame
+Merge1 <- merge(Merge1, rile.sum, by = "country_year")
