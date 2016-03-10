@@ -135,3 +135,24 @@ rile.sum$rile.pola.index <- sqrt(rile.sum$rile.sum)
 
 # Merging polarization index for country years back into main merge data frame
 Merge1 <- merge(Merge1, rile.sum, by = "country_year")
+
+
+############################################
+### Number of effective parties
+############################################
+
+# creating squared shares of seats for parties that have at least one seat in EP
+Merge1$p2 <- ifelse(Merge1$seats > 0, (Merge1$seats / Merge1$seatsum)^2, 0) 
+
+# Summing the squared seat shares up by country_years
+Merge1 <- group_by(Merge1, country_year)
+p2sum <- summarise(Merge1, p2sum = sum(p2, na.rm = TRUE))
+p2sum$enop <- 1 / (p2sum$p2sum)
+
+# Merging back into my main Merge
+Merge1 <- merge(Merge1, p2sum, by = "country_year")
+
+# Saving one more time
+write.csv(Merge1, "Analysis/Merge/merge_after_enop.csv")
+
+
