@@ -2,7 +2,7 @@
 # Eurosceptic Misfit Master Thesis
 # Author: Malte Berneaud-Kötz
 # Date created: 02.03.16
-# Last edited: 08.03.16
+# Last edited: 10.03.16
 # Contains the source code I used to merge the Euromanifesto data with the
 # Eurobarometer data and the computing of new variables which are used in the
 # analyis
