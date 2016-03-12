@@ -54,5 +54,16 @@ CYmerge$diff.EUS <- CYmerge$avg.EUS - CYmerge$sum.EUS.vote
 # removing duplicates
 CYmerge <- unique(CYmerge)
 
+# iterative testing: problem is in enop for some reason. 
+sum(is.infinite(CYmerge$enop))  
+sapply(CYmerge, function(x) sum(is.infinite(x))) # returns 1 for enop
+# building infinite vector for enop to replace data with NA
+inf <- is.infinite(CYmerge$enop)
+CYmerge$enop[inf] <- NA
+
+# Checking if this worked
+sapply(CYmerge, function(x) sum(is.infinite(x))) # fixed now
+
+
 # Writing the finished file for anaylsis to disk
 write.csv(CYmerge, "Analysis/Merge/CYmerge.csv")
