@@ -2,9 +2,9 @@
 # Eurosceptic Misfit Master Thesis
 # Author: Malte Berneaud-Kötz
 # Date created: 10.03.16
-# Last edited: 10.03.16
+# Last edited: 13.03.16
 # Contains estimation of my models used in the analysis of the eurosceptic misfit
-# using Prais-Winsten estimation 
+# using random effects and fixed effects models
 
 CYdata <- read.csv("Analysis/Merge/CYmerge.csv")
 
