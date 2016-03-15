@@ -60,8 +60,11 @@ phtest(EUS.fe, EUS.re)  # comes back showing the models are consistent
 stargazer(lm, EUS.fe, EUS.re, title = "Regression Results", font.size = "small")
 
 
-# Estimating a model which for inst.EUS and gen.EUS with the 
+# Estimating a model which treats inst.EUS and gen.EUS as separate with the 
 # same predictors
+
+split.lm <- lm(diff.EUS ~ gen.EUS + inst.EUS + pola.index + enop + member.dur +
+                 CEE, data = panel)
 
 split.EUS.re <- plm(diff.EUS ~ gen.EUS + inst.EUS + pola.index + enop + member.dur + CEE, 
                          data = panel, model = "random")
@@ -73,6 +76,11 @@ split.EUS.fe <- plm(diff.EUS ~ gen.EUS + inst.EUS + pola.index + enop + member.d
 
 summary(split.EUS.fe)  # Checking out the results
 
+# Creating output for the split models in stargazer
+stargazer(split.lm, split.EUS.fe, split.EUS.re, type = "text",
+          title = "Regression Results", font.size = "small")
+
 # Conducting Hausman test for the two estimates
 phtest(split.EUS.fe, split.EUS.re)
+
 
