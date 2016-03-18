@@ -9,8 +9,14 @@
 library(ggplot2)
 library(dplyr)
 
+####################################
+# IV and DV over time
+####################################
+
 # reading data
 CYmerge <- read.csv("Analysis/Merge/CYmerge.csv")
+panel <- read.csv("Analysis/Merge/panel.csv")
+
 
 # grouping in Swedish, Finnish and Austrian elections of 1995 and 1996 in with 
 # other 1994 elections
@@ -25,7 +31,7 @@ year_averages <- summarise(graph, gen.avg = mean(gen.EUS, na.rm = TRUE),
                            diff.avg = mean(diff.EUS, na.rm = TRUE))
 
 
-# plotting averages
+# plotting averages for all countries
 averages <- ggplot(year_averages, aes(x = year)) +
               geom_line(aes(y = inst.avg, colour = "inst.avg")) +
               geom_line(aes(y = gen.avg, colour = "gen.avg")) +
@@ -37,7 +43,22 @@ averages + scale_colour_discrete(name = "Dependent and independent variables",
                                          "average instrumental Euroscepticism"))+
   ylab("Variable value in %") + xlab("Year of EP election")
 
+ggsave("Analysis/Graphs/DP_and_IVs_over_time.png")
+ggsave("Analysis/Graphs/DP_and_IVs_over_time.pdf")
 
 
-ggsave("Analysis/Modeling/DP_and_IVs_over_time.png")
-ggsave("Analysis/Modeling/DP_and_IVs_over_time.pdf")
+
+## Plotting avg. EUS in all old MS over the study period 
+
+
+######################
+# Scatterplots
+######################
+
+# of all variables in data
+spm(panel)
+dev.print(pdf, "Analysis/Graphs/scatterplotmatrix.pdf")
+
+scatterplotMatrix(~ diff.EUS + avg.EUS + pola.index + enop + member.dur + CEE | nation,
+                  data = panel)
+dev.print(pdf, "Analysis/Graphs/spm_by_nation.pdf")
