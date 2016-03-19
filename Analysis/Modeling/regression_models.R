@@ -14,7 +14,7 @@ library(plm)
 library(stargazer)
 library(lmtest)
 library(prais)
-
+library(panelAR)
 
 # re-arranging data frame to fit with plm package (nation and year in front)
 panel <- select(CYdata, nation, year, diff.EUS, avg.EUS, gen.EUS, inst.EUS, 
@@ -128,10 +128,58 @@ phtest(split.EUS.fe, split.EUS.re)
 PCSE.fe <- coeftest(split.EUS.fe, vcovHC)
 stargazer(PCSE.fe)
 
-# Estimating a Prais Winsten Model to account for the persistence
 
-pw <- prais.winsten(diff.EUS ~ gen.EUS + inst.EUS + pola.index + enop + member.dur + CEE, 
+# to include the intercepts for each country, the package prais requires me to
+# use dummies for all countries except one as the function does not accept factors
+levels <- levels(panel$nation)
+c.names <- c("Sweden",	"Denmark",	"Finland",	"Belgium",	"The Netherlands",
+             "Luxembourg",	"France",	"Italy",	"Spain",	"Greece",	"Portugal",
+             "Cyprus",	"Malta",	"Germany",	"Austria",	"United Kingdom",	"Ireland",
+             "Bulgaria",	"Czech Republic",	"Estonia",	"Hungary",	"Latvia",	"Lithuania",
+             "Poland",	"Romania",	"Slovakia",	"Slovenia")  # useless because in
+    # wrong order
+
+for(i in seq_along(levels)) {
+  used <- levels[i]
+  panel$temp <- ifelse(panel$nation == levels[i], 1, 0)
+  names(panel) <- sub("^temp$", paste0("dummy", ".", levels[i]), names(panel))
+}
+
+# Estimating a Prais Winsten Model to account for the persistence of non-stationarity
+
+pw <- prais.winsten(diff.EUS ~ gen.EUS + inst.EUS + pola.index + enop + 
+                      member.dur + dummy.13 + dummy.14 + dummy.31 +
+                      dummy.32 + dummy.33 + dummy.34 + dummy.35 + dummy.36 +
+                      dummy.37 + dummy.41 + dummy.42 + dummy.51 + dummy.53 +
+                      dummy.80 + dummy.82 + dummy.86 + dummy.87 + dummy.88 +
+                      dummy.92 + dummy.93 + dummy.96 + dummy.97, data = panel)
 
 
 
-# Non-stationarity 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+panel2 <- filter(panel, year != 1995)
+panel2 <- filter(panel, year != 1996)
+
+panel2$year.f <- as.integer(panel2$year.f)
+panel2 <- arrange(panel2, year.f, nation)
+
+pAR <- panelAR(diff.EUS ~ gen.EUS + inst.EUS + pola.index + enop + 
+                 member.dur + CEE + country, 
+               data = panel2, panelVar = "nation", timeVar = "year.f", 
+               panelCorrMethod = "pcse", rho.na.rm = TRUE)
+dput(pAR, file = "Analysis/Modeling/pAR")
