@@ -2,7 +2,7 @@
 # Eurosceptic Misfit Master Thesis
 # Author: Malte Berneaud-Kötz
 # Date created: 10.03.16
-# Last edited: 13.03.16
+# Last edited: 22.03.16
 # Contains estimation of my models used in the analysis of the eurosceptic misfit
 # using random effects and fixed effects models
 
@@ -13,23 +13,30 @@ library(dplyr)
 library(plm)
 library(stargazer)
 library(lmtest)
-library(prais)
-library(panelAR)
+
 
 # re-arranging data frame to fit with plm package (nation and year in front)
 panel <- select(CYdata, nation, year, diff.EUS, avg.EUS, gen.EUS, inst.EUS, 
                 pola.index, enop, member.dur, CEE)
+
+
+
+write.csv(panel, "Analysis/Merge/panel.csv")
+
+# creating a summary statistics table for the dataset in the analysis
+panel2 <- select(panel, -nation, -year, -avg.EUS, -CEE)
+stargazer(panel2, label = "fig: summarystatistics", title = "Summary Statistics",
+          covariate.labels = c("Eurosceptic Misfit", "General Euroscepticism", "Instrumental Euroscepticism",
+                               "Polarisation Index", "Effective Number of Parties", 
+                               "Membership Duration", digits = 2))
+
 
 # Changing the nation and year variables to be factors
 panel$nation <- as.factor(panel$nation)
 panel$year.f <- as.factor(panel$year)
 panel$CEE.f <- as.factor(panel$CEE)
 
-write.csv(panel, "Analysis/Merge/panel.csv")
-
-# creating summary statistics for the panel subset of the data 
-stargazer(panel)
-
+#setting data as plm panel
 panel <- plm.data(panel, indexes = c("nation", "year.f"))
 
 # arranging correctly into consecutive year
@@ -73,7 +80,7 @@ stargazer(pool, EUS.fe, EUS.re, title = "Regression Results", font.size = "small
 # same predictors
 
 split.pool <- plm(diff.EUS ~ gen.EUS + inst.EUS + pola.index + enop + member.dur +
-                 CEE, data = panel, model = "pooling")
+                 CEE + factor(year), data = panel, model = "pooling")
 
 split.EUS.re <- plm(diff.EUS ~ gen.EUS + inst.EUS + pola.index + enop + member.dur + CEE, 
                          data = panel, model = "random")
@@ -85,9 +92,6 @@ split.EUS.fe <- plm(diff.EUS ~ gen.EUS + inst.EUS + pola.index + enop + member.d
 
 summary(split.EUS.fe)  # Checking out the results
 
-# Creating output for the split models in stargazer
-stargazer(split.pool, split.EUS.fe, split.EUS.re, type = "text",
-          title = "Regression Results", font.size = "small")
 
 
 ##########################
@@ -110,7 +114,7 @@ pcdtest(EUS.fe, test = c("cd")) # does not return anything either
 pcdtest(split.EUS.fe, test = c("lm")) # does not return anything either
 
 # Check for serial correlation in error term 
-pbgtest(split.EUS.fe) # results indicate that there is serial correlation
+pwartest(split.EUS.fe) # There is no serial correlation
 
 # Checkf for unity roots/stationarity
 library(tseries)
@@ -125,61 +129,24 @@ phtest(split.EUS.fe, split.EUS.re)
 ##########################
 
 # calculating PCSE according to Beck and Katz (1995) for the estimates
-PCSE.fe <- coeftest(split.EUS.fe, vcovHC)
-stargazer(PCSE.fe)
+PCSE.fe <- coeftest(split.EUS.fe, vcovBK)
+# Warning: Beck and Katz can really understate the errors when T not at least 3*N
+
+# Regular white robust standard errors for RE and FE models
+robust.fe <- coeftest(split.EUS.fe, vcovHC)
+robust.re <- coeftest(split.EUS.re, vcovHC)
 
 
-# to include the intercepts for each country, the package prais requires me to
-# use dummies for all countries except one as the function does not accept factors
-levels <- levels(panel$nation)
-c.names <- c("Sweden",	"Denmark",	"Finland",	"Belgium",	"The Netherlands",
-             "Luxembourg",	"France",	"Italy",	"Spain",	"Greece",	"Portugal",
-             "Cyprus",	"Malta",	"Germany",	"Austria",	"United Kingdom",	"Ireland",
-             "Bulgaria",	"Czech Republic",	"Estonia",	"Hungary",	"Latvia",	"Lithuania",
-             "Poland",	"Romania",	"Slovakia",	"Slovenia")  # useless because in
-    # wrong order
-
-for(i in seq_along(levels)) {
-  used <- levels[i]
-  panel$temp <- ifelse(panel$nation == levels[i], 1, 0)
-  names(panel) <- sub("^temp$", paste0("dummy", ".", levels[i]), names(panel))
-}
-
-# Estimating a Prais Winsten Model to account for the persistence of non-stationarity
-
-pw <- prais.winsten(diff.EUS ~ gen.EUS + inst.EUS + pola.index + enop + 
-                      member.dur + dummy.13 + dummy.14 + dummy.31 +
-                      dummy.32 + dummy.33 + dummy.34 + dummy.35 + dummy.36 +
-                      dummy.37 + dummy.41 + dummy.42 + dummy.51 + dummy.53 +
-                      dummy.80 + dummy.82 + dummy.86 + dummy.87 + dummy.88 +
-                      dummy.92 + dummy.93 + dummy.96 + dummy.97, data = panel)
+stargazer(robust.fe, robust.re, label = "tab: results", column.labels = c("FE", "RE"),
+          title = "Fixed Effects and Random Effects Estimation with robust standard errors",
+          dep.var.labels = "Eurosceptic Misfit", covariate.labels = 
+            c("General Euroscepticism", "Instrumental Euroscepticism",
+              "Polarisation Index", "Effective Number of Parties", 
+              "Membership Duration", "Central/Eastern European"), digits = 2)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-panel2 <- filter(panel, year != 1995)
-panel2 <- filter(panel, year != 1996)
-
-panel2$year.f <- as.integer(panel2$year.f)
-panel2 <- arrange(panel2, year.f, nation)
-
-pAR <- panelAR(diff.EUS ~ gen.EUS + inst.EUS + pola.index + enop + 
-                 member.dur + CEE + country, 
-               data = panel2, panelVar = "nation", timeVar = "year.f", 
-               panelCorrMethod = "pcse", rho.na.rm = TRUE)
-dput(pAR, file = "Analysis/Modeling/pAR")
+# extracting the fixed effects "intercepts"
+fixeffs <- fixef(split.EUS.fe)
+fixeffs <- as.vector(fixeffs)
+write.table(fixeffs, "Analysis/Modeling/fixeffs")

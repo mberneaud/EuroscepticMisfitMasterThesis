@@ -159,23 +159,44 @@ cor.EUS <- cor(EBMerge$gen.EUS, EBMerge$inst.EUS, use = "complete.obs")
 ###################
 # Aggregation of the data
 ###################
-
-# Arranging data in rows to allow group_by to work properly
-EBMerge <- arrange(EBMerge, nation, year)
-
-# Grouping data in preparation of the aggregation
-EBGroup <- group_by(EBMerge, nation, year)
-
-# Aggregating using the summarise function
-EBAgg <- summarise(EBGroup, gen.EUS = mean(gen.EUS, na.rm = TRUE),
-                   inst.EUS = mean(inst.EUS, na.rm = TRUE))
-
+# Recoding country names to match with Euromanifesto encoding
+# note to self: coded one observation on Norway as 98, needs to be removed
+# Note to self: Eurobarometer data for Sweden and Austria is missing in the Spring
+# 1994 EB, maybe I should use data from fall also. 
+# see recoding_specification textfile in Eurobarometer folder for conversions
 # Dropping last five rows as they contain data for Romania, Bulgaria,
 # Republic of Northern Cyprus, Turkey, Croatia and FYROM
-EBAgg <- filter(EBAgg, nation <= 29)
+EBMerge <- filter(EBMerge, nation <= 29)
 
 # filtering out Norway
-EBAgg <- filter(EBAgg, nation != 14)
+EBMerge <- filter(EBMerge, nation != 14)
+
+# arranging them by nation to have correctly ordered vectors
+EBMerge <- arrange(EBMerge, nation)
+
+oldvars <- c(1:12, 15:29)
+newvars <- c(31, 21, 22, 41, 32, 23, 13, 53, 51, 34, 33, 35, 14, 11, 42, 36,
+             82, 83, 86, 87, 88, 37, 92, 96, 97, 80, 93)
+
+
+for(i in 1:nrow(EBMerge)) {
+  use <- EBMerge$nation[i]
+  s <- match(use, oldvars)
+  EBMerge$nation[i] <- newvars[s]
+}
+
+# creating a country_year variable for aggregation and later merging
+EBMerge$country_year <- paste0(EBMerge$nation, "_", substr(EBMerge$year, 3, 4))
+
+
+# Grouping data in preparation of the aggregation
+EBGroup <- group_by(EBMerge, country_year)
+
+# Aggregating using the summarise function
+EBAgg <- summarise(EBGroup, nation = mean(nation), year = mean(year),
+                   gen.EUS = mean(gen.EUS, na.rm = TRUE),
+                   inst.EUS = mean(inst.EUS, na.rm = TRUE))
+
 
 # Transforming the values for EUS into percent values
 EBAgg <- mutate(EBAgg, gen.EUS = gen.EUS * 100, inst.EUS = inst.EUS * 100)
@@ -183,23 +204,6 @@ EBAgg <- mutate(EBAgg, gen.EUS = gen.EUS * 100, inst.EUS = inst.EUS * 100)
 # Correlation of EUS variables in aggregated data
 cor.agg.EUS <- cor(EBAgg$inst.EUS, EBAgg$gen.EUS)
 
-# Recoding country names to match with Euromanifesto encoding
-# note to self: coded one observation on Norway as 98, needs to be removed
-# Note to self: Eurobarometer data for Sweden and Austria is missing in the Spring
-# 1994 EB, maybe I should use data from fall also. 
-
-# see recoding_specification textfile in Eurobarometer folder for conversions
-oldvars <- c(1:12, 15:29)
-newvars <- c(31, 21, 22, 41, 32, 23, 13, 53, 51, 34, 33, 35, 14, 11, 42, 36,
-             82, 93, 86, 87, 88, 37, 92, 96, 97, 80, 93)
-
-
-for(i in seq_along(oldvars)) {
-  EBAgg$nation[EBAgg$nation == oldvars[i]] <- newvars[i]
-}
-
-# creating a country_year variable for merging
-EBAgg$country_year <- paste0(EBAgg$nation, "_", substr(EBAgg$year, 3, 4))
 
 # Saving the data frame for later as a .csv file
 write.csv(EBAgg, "Analysis/Merge/EB_agg_EUS.csv")

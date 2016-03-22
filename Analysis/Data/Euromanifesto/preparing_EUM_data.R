@@ -19,5 +19,5 @@ EUmanifesto <- filter(EUmanifesto, country != 10)
 # filtering out missing values for votes
 EUmanifesto <- filter(EUmanifesto, vote >= -777)
 
-#filtering out missing values for 
-
+# Writing created data set to disc
+write.csv(EUmanifesto, "Analysis/Data/Euromanifesto/EMP.csv")

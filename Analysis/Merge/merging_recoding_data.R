@@ -2,7 +2,7 @@
 # Eurosceptic Misfit Master Thesis
 # Author: Malte Berneaud-Kötz
 # Date created: 02.03.16
-# Last edited: 10.03.16
+# Last edited: 22.03.16
 # Contains the source code I used to merge the Euromanifesto data with the
 # Eurobarometer data and the computing of new variables which are used in the
 # analyis
@@ -11,8 +11,8 @@
 library(dplyr)
 
 # sourcing cleaning files
-source("Analysis/Data/Eurobarometer/preparing_EB_data.R")
-source("Analysis/Data/Euromanifesto/preparing_EUM_data.R")
+EUmanifesto <- read.csv("Analysis/Data/Euromanifesto/EMP.csv")
+EBAgg <- read.csv("Analysis/Merge/EB_agg_EUS.csv")
 
 # Merging merged data with EB aggregates
 Merge1 <- merge(EUmanifesto, EBAgg, by = "country_year")

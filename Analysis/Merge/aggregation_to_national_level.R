@@ -2,7 +2,7 @@
 # Eurosceptic Misfit Master Thesis
 # Author: Malte Berneaud-Kötz
 # Date created: 10.03.16
-# Last edited: 10.03.16
+# Last edited: 22.03.16
 # Contains the source code I used to create an aggregate data set observing 
 # countries nationally during each election round
 
