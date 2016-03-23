@@ -96,9 +96,9 @@ a$member.f <- as.factor(a$member)
 order <- reorder(a$c.names, a$x)
 ggplot(a, aes(x=order, y=x, group=member.f, colour=member.f)) +
   geom_point() +
-  ylab("Idiosyncratic error") + xlab("Member State") +
+  ylab("Country-specific errors") + xlab("Member State") +
   scale_colour_discrete(name = "Year of accession")
 
 # saving the plot
-ggsave("Analysis/Graphs/idiosyncratic_error.pdf")
+ggsave("Analysis/Graphs/country-specific_error.pdf")
 
