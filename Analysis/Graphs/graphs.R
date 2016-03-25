@@ -2,16 +2,14 @@
 # Eurosceptic Misfit Master Thesis
 # Author: Malte Berneaud-Kötz
 # Date created: 13.03.16
-# Last edited: 22.03.16
+# Last edited: 25.03.16
 # Contains graphs used in my master thesis
 
 # loading libraries
 library(ggplot2)
 library(dplyr)
 library(car)
-library(grid)
-library(gridExtra)
-library(cowplot)
+
 
 # Setting ggplot font size for entire session
 
@@ -100,14 +98,15 @@ a$member.f <- as.factor(a$member)
 
 
 
-# Graphing the idioyncratic error
+# Graphing the country-specific error
 # ordering factor for scale from lowest to highest
 order <- reorder(a$c.names, a$x)
 ggplot(a, aes(x=order, y=x, group=member.f, colour=member.f)) +
   geom_point() +
   ylab("Country-specific errors") + xlab("Member State") +
   scale_colour_discrete(name = "Year of accession") +
-  theme(text = element_text(size = 12))
+  theme(text = element_text(size = 12)) +
+  scale_y_continuous(breaks=seq(-9, 18, 1))
 
 # saving the plot
 ggsave("Analysis/Graphs/country-specific_error.pdf", width = 297, height = 120,
@@ -118,32 +117,81 @@ ggsave("Analysis/Graphs/country-specific_error.pdf", width = 297, height = 120,
 ################
 source("Analysis/Graphs/functions.R")
 
-# creating data frame with id and country names
-ids <- data.frame(nation = c(21, 22, 23, 31, 32, 41), 
-                  name = c("Belgium", "The Netherlands", "Luxembourg", "France",
-                           "Italy", "Germany"))
-
-# Creating list will all plots inside it 
-plots <- list()
-for(i in 1:nrow(ids)) {
-  plot <- drawgg(ids$nation[i], ids$name[i])
-  plots[[i]] <- plot
-}
-
-
-
 # Drawing graphs by hand
-DE <- drawgg(41, "Germany")
-class(DE) <- c("gg", "ggplot")
-BE <- drawgg(21, "Belgium")
-class(BE) <- c("gg", "ggplot")
-NL <- drawgg(22, "The Netherlands")
-class(NL) <- c("gg", "ggplot")
-LU <- drawgg(23, "Luxembourg")
-class(LU) <- c("gg", "ggplot")
-FR <- drawgg(31, "France")
-class(FR) <- c("gg", "ggplot")
-IT <- drawgg(32, "Italy")
-class(IT) <- c("gg", "ggplot")
+DE <- drawgg(41)
+ggsave("Analysis/Graphs/DE.pdf", width = 150, height = 100, units = "mm")
+BE <- drawgg(21)
+ggsave("Analysis/Graphs/BE.pdf", width = 150, height = 100, units = "mm")
+NL <- drawgg(22)
+ggsave("Analysis/Graphs/NL.pdf", width = 150, height = 100, units = "mm")
+LU <- drawgg(23)
+ggsave("Analysis/Graphs/LU.pdf", width = 150, height = 100, units = "mm")
+FR <- drawgg(31)
+ggsave("Analysis/Graphs/FR.pdf", width = 150, height = 100, units = "mm")
+IT <- drawgg(32)
+ggsave("Analysis/Graphs/IT.pdf", width = 150, height = 100, units = "mm")
 
-plot_grid(DE, BE, NL, LU, FR, IT, ncol = 2, nrow = 3)
+
+###################
+# Average Eurosceptic misfit by geographical location
+###################
+AllE <- group_by(CYmerge, nation)
+AllE <- summarise(AllE, diff.EUS = mean(diff.EUS))
+range(AllE$diff.EUS)
+
+### Northern Europe
+# Data frame
+NE <- dplyr::filter(CYmerge, nation <= 14)
+NE <- group_by(NE, nation)
+NE <- summarise(NE, diff.EUS = mean(diff.EUS))
+NE$cname <- c("SE", "DK", "FI")
+
+# Graph 
+ggplot(NE, aes(y = diff.EUS, x = cname)) + geom_bar(stat = "identity") +
+  ylab("Average Eurosceptic Misfit") + xlab("") +
+  expand_limits(y = c(-3, 28))+
+  theme(text = element_text(size = 20))
+ggsave("Analysis/Graphs/NE.pdf", width = 150, height = 100, units = "mm")
+
+# Western Europe
+WE <- dplyr::filter(CYmerge, (nation >= 21 & nation <= 31) | (nation >= 41 &
+                                                                nation <= 53))
+WE <- group_by(WE, nation)
+WE <- summarise(WE, diff.EUS = mean(diff.EUS))
+WE$cname <- c("BE", "NL", "LU", "FR", "DE",
+              "AT", "UK", "IE")
+
+# Graph 
+ggplot(WE, aes(y = diff.EUS, x = cname)) + geom_bar(stat = "identity") +
+  ylab("Average Eurosceptic Misfit") + xlab("")+
+  expand_limits(y = c(-3, 28))+
+  theme(text = element_text(size = 20))
+ggsave("Analysis/Graphs/WE.pdf", width = 150, height = 100, units = "mm")
+
+# Southern Europe
+SE <- dplyr::filter(CYmerge, nation >= 32 & nation <= 37)
+SE <- group_by(SE, nation)
+SE <- summarise(SE, diff.EUS = mean(diff.EUS))
+SE$cname <- c("IT", "ES", "EL", "PT", "CY", "MT")
+
+# Graph
+ggplot(SE, aes(y = diff.EUS, x = cname)) + geom_bar(stat = "identity") +
+  ylab("Average Eurosceptic Misfit") + xlab("")+
+  expand_limits(y = c(-3, 28))+
+  theme(text = element_text(size = 20))
+ggsave("Analysis/Graphs/SE.pdf", width = 150, height = 100, units = "mm")
+
+# Central and Eastern Europe
+CEE <- dplyr::filter(CYmerge, nation >= 80)
+CEE <- group_by(CEE, nation)
+CEE <- summarise(CEE, diff.EUS = mean(diff.EUS))
+CEE$cname <- c("BG", "CZ", "EE", "HU", "LV",
+               "LT", "PL", "RO", "SK", "SI")
+
+# Graph
+ggplot(CEE, aes(y = diff.EUS, x = cname)) + geom_bar(stat = "identity") +
+  ylab("Average Eurosceptic Misfit") + xlab("")+
+  expand_limits(y = c(-3, 28))+
+  theme(text = element_text(size = 20))
+ggsave("Analysis/Graphs/CEE.pdf", width = 150, height = 100, units = "mm")
+
