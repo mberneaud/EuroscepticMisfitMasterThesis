@@ -151,7 +151,7 @@ EBMerge <- rbind(EB1979, EB1984, EB1989, EB1994, EB1995S, EB1996AF, EB1999,
 EBMerge$gen.EUS <- ifelse(EBMerge$membership == 3, 1, 0)
 
 # Creating a dummy variable for instrumentally Eurosceptic respondents
-EBMerge$inst.EUS <- ifelse(EBMerge$membership == 2, 1, 0)
+EBMerge$inst.EUS <- ifelse(EBMerge$benefit == 2, 1, 0)
 
 # Checking correlation of instrumental and general EUS
 cor.EUS <- cor(EBMerge$gen.EUS, EBMerge$inst.EUS, use = "complete.obs")

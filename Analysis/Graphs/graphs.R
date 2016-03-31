@@ -106,7 +106,7 @@ ggplot(a, aes(x=order, y=x, group=member.f, colour=member.f)) +
   ylab("Country-specific errors") + xlab("Member State") +
   scale_colour_discrete(name = "Year of accession") +
   theme(text = element_text(size = 12)) +
-  scale_y_continuous(breaks=seq(-9, 18, 1))
+  scale_y_continuous(breaks=seq(-18, 14, 1))
 
 # saving the plot
 ggsave("Analysis/Graphs/country-specific_error.pdf", width = 297, height = 120,

@@ -118,7 +118,7 @@ pwartest(split.EUS.fe) # There is no serial correlation
 
 # Checkf for unity roots/stationarity
 library(tseries)
-adf.test(panel$diff.EUS)  # process is not stationary, but weakly dependent, as 
+adf.test(panel$diff.EUS)  # process stationary, but weakly dependent, as 
 # is evidenced by the small estimated rho from the prais-winsten estimation
 
 # Conducting Hausman test for the two estimates
@@ -150,3 +150,8 @@ stargazer(robust.fe, robust.re, label = "tab: results", column.labels = c("FE", 
 fixeffs <- fixef(split.EUS.fe)
 fixeffs <- as.vector(fixeffs)
 write.table(fixeffs, "Analysis/Modeling/fixeffs")
+
+
+# Table
+mytable <- table(EBMerge$gen.EUS, EBMerge$inst.EUS)
+prop.table(mytable, 1)
