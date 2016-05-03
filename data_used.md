@@ -3,17 +3,17 @@ This file contains information on all the files that are used in the analysis he
 
 ## Data on attitudes of European voters
 ### [Eurobarometer](https://dbk.gesis.org/dbksearch/PDESC2.asp?no=0001&search=&search2=&DB=e&tab=0&notabs=&nf=1&af=&ll=10)
-I used the following Eurobarometers in my Analysis. All of them can be downloaded on the GESIS homepage after registration. All these files were put into the respective folders (named "Spring 1979" to "January-February 2009") in the Data/Eurobarometer sub-folder for conducting the analysis. **Note: Without "reproducing" this step by hand, the files in my Analysis won't work.**
-+ [April 1979](https://dbk.gesis.org/dbksearch/SDESC2.ASP?no=1036&db=e&search=&search2=&tab=0&notabs=&nf=1&af=&ll=10)
-+ [April 1984](https://dbk.gesis.org/dbksearch/sdesc2.asp?no=1320&db=e&doi=10.4232/1.10878)
-+ [March/April 1989](https://dbk.gesis.org/dbksearch/SDESC2.ASP?no=1750&db=e&search=&search2=&tab=0&notabs=&nf=1&af=&ll=10)
-+ [March-May 1994](https://dbk.gesis.org/dbksearch/SDESC2.ASP?no=2490&db=e&search=&search2=&tab=0&notabs=&nf=1&af=&ll=10)
-+ [November-December 1995](https://dbk.gesis.org/dbksearch/SDesc2.asp?ll=10&notabs=&af=&nf=&search=&search2=&db=E&no=2690)
-+ [April-May 1996](https://dbk.gesis.org/dbksearch/SDesc2.asp?ll=10&notabs=&af=&nf=&search=&search2=&db=E&no=2831)
-  + [Source on dates of AT and FI elections](http://www.europarl.europa.eu/press/sdp/backg/en/1996/b961007.htm)
-+ [March-May 1999](https://dbk.gesis.org/dbksearch/SDESC2.ASP?no=3171&db=e&search=&search2=&tab=0&notabs=&nf=1&af=&ll=10)
-+ [October-November 2004](https://dbk.gesis.org/dbksearch/SDesc2.asp?ll=10&notabs=&af=&nf=&search=&search2=&db=E&no=4229)
-+ [January-February 2009](https://dbk.gesis.org/dbksearch/SDesc2.asp?ll=10&notabs=&af=&nf=&search=&search2=&db=E&no=4971)
+I used the following Eurobarometers in my Analysis. All of them can be downloaded on the GESIS homepage after registration. All these files were put into their respective directories in the `Data/Eurobarometer` sub-directory. Please follow the links below to obtain the data and place them into the folders as indicated. **Note: Without "reproducing" this step by hand, the files in my Analysis won't work.**
++ [April 1979](https://dbk.gesis.org/dbksearch/SDESC2.ASP?no=1036&db=e&search=&search2=&tab=0&notabs=&nf=1&af=&ll=10): -> `Spring 1979` subdirectory
++ [April 1984](https://dbk.gesis.org/dbksearch/sdesc2.asp?no=1320&db=e&doi=10.4232/1.10878) -> `Spring 1984` subdirectory
++ [March/April 1989](https://dbk.gesis.org/dbksearch/SDESC2.ASP?no=1750&db=e&search=&search2=&tab=0&notabs=&nf=1&af=&ll=10) -> `Spring 1989` subdirectory
++ [March-May 1994](https://dbk.gesis.org/dbksearch/SDESC2.ASP?no=2490&db=e&search=&search2=&tab=0&notabs=&nf=1&af=&ll=10) -> `Spring 1994` subdirectory
++ [November-December 1995](https://dbk.gesis.org/dbksearch/SDesc2.asp?ll=10&notabs=&af=&nf=&search=&search2=&db=E&no=2690) -> `Sweden 1995` subdirectory
++ [April-May 1996](https://dbk.gesis.org/dbksearch/SDesc2.asp?ll=10&notabs=&af=&nf=&search=&search2=&db=E&no=2831) 
+  + [Source on dates of AT and FI elections](http://www.europarl.europa.eu/press/sdp/backg/en/1996/b961007.htm) -> `Astria Finland 1996` subdirectory
++ [March-May 1999](https://dbk.gesis.org/dbksearch/SDESC2.ASP?no=3171&db=e&search=&search2=&tab=0&notabs=&nf=1&af=&ll=10) -> `Spring 1999` subdirectory
++ [October-November 2004](https://dbk.gesis.org/dbksearch/SDesc2.asp?ll=10&notabs=&af=&nf=&search=&search2=&db=E&no=4229) -> `Fall 2004` subdirectory
++ [January-February 2009](https://dbk.gesis.org/dbksearch/SDesc2.asp?ll=10&notabs=&af=&nf=&search=&search2=&db=E&no=4971) -> `January-February 2009` subdirectory
 
 
 ## Data on European parties and their policy stances and national European Parliament Election results
