@@ -2,7 +2,7 @@
 # Eurosceptic Misfit Master Thesis
 # Author: Malte Berneaud-Kötz
 # Date created: 02.03.16
-# Last edited: 08.03.16
+# Last edited: 03.05.16
 # Preparing Eurobarometer data for merge
 # contains the code I used to create a dataset with information on instrumental
 # and political Euroscepticism

@@ -2,7 +2,7 @@
 # Eurosceptic Misfit Master Thesis
 # Author: Malte Berneaud-Kötz
 # Date created: 13.03.16
-# Last edited: 25.03.16
+# Last edited: 03.05.16
 # Contains graphs used in my master thesis
 
 # loading libraries
@@ -10,16 +10,15 @@ library(ggplot2)
 library(dplyr)
 library(car)
 
-
-# Setting ggplot font size for entire session
-
+# sourcing external function
+source("Analysis/Code/functions.R")
 
 ####################################
 # IV and DV over time
 ####################################
 
 # reading data
-FE <- read.table("Analysis/Modeling/fixeffs")
+FE <- read.table("Analysis/Merge/fixeffs")
 CYmerge <- read.csv("Analysis/Merge/CYmerge.csv")
 panel <- read.csv("Analysis/Merge/panel.csv")
 abase <- read.csv("Analysis/Merge/merge_after_enop.csv")
@@ -115,7 +114,7 @@ ggsave("Analysis/Graphs/country-specific_error.pdf", width = 297, height = 120,
 ################
 # Eurosceptic misfits in Original 6 MS over time
 ################
-source("Analysis/Graphs/functions.R")
+
 
 # Drawing graphs by hand
 DE <- drawgg(41)

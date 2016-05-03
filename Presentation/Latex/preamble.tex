@@ -1,0 +1,23 @@
+\documentclass[fontsize=12pt, paper=a4, headinclude, oneside, pagesize=auto, numbers=noenddot, plainheadsepline, open=right, toc=listof, toc=bibliography]{scrreprt}
+
+% setting line-spacing 
+\linespread{1.25}
+
+\setlength{\parskip}{16 pt} 
+
+% Loading Libraries
+\usepackage{apacite}
+\usepackage[utf8]{inputenc}
+\usepackage{eurosym}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{pdflscape}
+\DeclareUnicodeCharacter{20AC}{\euro}
+\usepackage{subfig}
+\usepackage{caption}
+
+% changing behaviour of \makechapter manually
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
+\makeatother

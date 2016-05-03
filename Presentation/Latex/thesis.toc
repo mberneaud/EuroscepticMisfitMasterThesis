@@ -1,0 +1,27 @@
+\contentsline {chapter}{\numberline {1}Executive summary}{1}
+\contentsline {chapter}{\numberline {2}Introduction}{2}
+\contentsline {chapter}{\numberline {3}State of the art in Euroscepticism scholarship}{4}
+\contentsline {section}{\numberline {3.1}Determinants of Eurosceptic attitudes}{4}
+\contentsline {section}{\numberline {3.2}Categorisation of Euroscepticism}{5}
+\contentsline {section}{\numberline {3.3}Theories on Second-order elections}{8}
+\contentsline {chapter}{\numberline {4}Theoretical model}{12}
+\contentsline {section}{\numberline {4.1}Hypotheses}{13}
+\contentsline {chapter}{\numberline {5}The study data set}{16}
+\contentsline {section}{\numberline {5.1}Data sources}{16}
+\contentsline {section}{\numberline {5.2}Operationalisation}{17}
+\contentsline {subsection}{\numberline {5.2.1}Eurosceptic attitudes of citizens}{17}
+\contentsline {subsection}{\numberline {5.2.2}Eurosceptic parties}{19}
+\contentsline {subsection}{\numberline {5.2.3}The Eurosceptic misfit}{21}
+\contentsline {subsection}{\numberline {5.2.4}Party system polarisation}{21}
+\contentsline {subsection}{\numberline {5.2.5}Effective number of parties}{23}
+\contentsline {subsection}{\numberline {5.2.6}Membership duration}{24}
+\contentsline {chapter}{\numberline {6}Statistical Analysis}{25}
+\contentsline {section}{\numberline {6.1}Statistical models}{25}
+\contentsline {section}{\numberline {6.2}Descriptive statistics: the Eurosceptic misfit over time}{27}
+\contentsline {section}{\numberline {6.3}Post-regression analytics}{30}
+\contentsline {section}{\numberline {6.4}Inferential statistics}{32}
+\contentsline {subsection}{\numberline {6.4.1}Random effects model}{34}
+\contentsline {subsection}{\numberline {6.4.2}Fixed effects model}{35}
+\contentsline {subsection}{\numberline {6.4.3}Comparing random effects and fixed effects models}{39}
+\contentsline {chapter}{\numberline {7}Conclusion}{40}
+\contentsline {chapter}{References}{42}

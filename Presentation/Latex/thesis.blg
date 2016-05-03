@@ -1,0 +1,61 @@
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: thesis.aux
+The style file: apacite.bst
+Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
+Reallocated global_strs (elt_size=20001) to 20 items from 10.
+Reallocated glb_str_end (elt_size=4) to 20 items from 10.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: bibliography.bib
+Repeated entry---line 903 of file bibliography.bib
+ : @article{Verney2011
+ :                    ,
+I'm skipping whatever remains of this entry
+apacite.bst [2013/07/21 v6.03 APA bibliography style]
+You've used 61 entries,
+            6951 wiz_defined-function locations,
+            1701 strings with 23906 characters,
+and the built_in function-call counts, 109668 in all, are:
+= -- 13516
+> -- 788
+< -- 5322
++ -- 5142
+- -- 148
+* -- 7309
+:= -- 20299
+add.period$ -- 255
+call.type$ -- 61
+change.case$ -- 1103
+chr.to.int$ -- 0
+cite$ -- 122
+duplicate$ -- 2741
+empty$ -- 4544
+format.name$ -- 1258
+if$ -- 21001
+int.to.chr$ -- 0
+int.to.str$ -- 199
+missing$ -- 0
+newline$ -- 1588
+num.names$ -- 488
+pop$ -- 2438
+preamble$ -- 1
+purify$ -- 246
+quote$ -- 0
+skip$ -- 6483
+stack$ -- 0
+substring$ -- 5579
+swap$ -- 1738
+text.length$ -- 142
+text.prefix$ -- 0
+top$ -- 1
+type$ -- 4880
+warning$ -- 0
+while$ -- 424
+width$ -- 0
+write$ -- 1852
+(There was 1 error message)

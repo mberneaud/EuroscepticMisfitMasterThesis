@@ -2,7 +2,7 @@
 # Eurosceptic Misfit Master Thesis
 # Author: Malte Berneaud-Kötz
 # Date created: 10.03.16
-# Last edited: 22.03.16
+# Last edited: 03.05.16
 # Contains estimation of my models used in the analysis of the eurosceptic misfit
 # using random effects and fixed effects models
 
@@ -13,7 +13,6 @@ library(dplyr)
 library(plm)
 library(stargazer)
 library(lmtest)
-
 
 # re-arranging data frame to fit with plm package (nation and year in front)
 panel <- select(CYdata, nation, year, diff.EUS, avg.EUS, gen.EUS, inst.EUS, 
@@ -28,7 +27,8 @@ panel2 <- select(panel, -nation, -year, -avg.EUS, -CEE)
 stargazer(panel2, label = "fig: summarystatistics", title = "Summary Statistics",
           covariate.labels = c("Eurosceptic Misfit", "General Euroscepticism", "Instrumental Euroscepticism",
                                "Polarisation Index", "Effective Number of Parties", 
-                               "Membership Duration", digits = 2))
+                               "Membership Duration", digits = 2),
+          out = "Presentation/Latex/summary_statistics.tex")
 
 
 # Changing the nation and year variables to be factors
@@ -71,9 +71,6 @@ summary(EUS.re)
 # Hausman test for consistency of the estimates
 phtest(EUS.fe, EUS.re)  # comes back showing the models are consistent
 
-
-# comparing the two models side by side
-stargazer(pool, EUS.fe, EUS.re, title = "Regression Results", font.size = "small")
 
 
 # Estimating a model which treats inst.EUS and gen.EUS as separate with the 
@@ -142,14 +139,15 @@ stargazer(robust.fe, robust.re, label = "tab: results", column.labels = c("FE", 
           dep.var.labels = "Eurosceptic Misfit", covariate.labels = 
             c("General Euroscepticism", "Instrumental Euroscepticism",
               "Polarisation Index", "Effective Number of Parties", 
-              "Membership Duration", "Central/Eastern European"), digits = 2)
+              "Membership Duration", "Central/Eastern European"), digits = 2,
+          out = "Presentation/Latex/regression_results.tex")
 
 
 
 # extracting the fixed effects "intercepts"
 fixeffs <- fixef(split.EUS.fe)
 fixeffs <- as.vector(fixeffs)
-write.table(fixeffs, "Analysis/Modeling/fixeffs")
+write.table(fixeffs, "Analysis/Merge/fixeffs")
 
 
 # Table

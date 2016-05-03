@@ -2,7 +2,7 @@
 # Eurosceptic Misfit Master Thesis
 # Author: Malte Berneaud-Kötz
 # Date created: 08.03.16
-# Last edited: 08.03.16
+# Last edited: 03.05.16
 # Source code in this file is use to clean the Euromanifesto data prior to merging
 
 # attaching libraries
