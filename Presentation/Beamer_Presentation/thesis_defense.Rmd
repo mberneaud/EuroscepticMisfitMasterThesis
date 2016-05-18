@@ -1,0 +1,168 @@
+---
+title: "Master Thesis Defence"
+author: "Malte Berneaud-Kötz"
+date: "May 19, 2016"
+output:
+  beamer_presentation:
+    keep_tex: yes
+    colortheme: beaver
+    fonttheme: structurebold
+    slide_level: 2
+    theme: Malmoe
+subtitle: The Eurosceptic Misfit - Popular Euroscepticism and Electoral Support for
+  Eurosceptic Parties
+header-includes:
+- \usepackage{graphicx}
+- \usepackage{tikzpagenodes}
+- \usetikzlibrary{calc}
+- \usepackage{caption}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(include = FALSE, cache = TRUE, message = FALSE, fig.path = "graphs/",
+                      warning = FALSE, fig.align = "center", dev = "pdf")
+```
+
+```{r analysis}
+source("../../master.R")
+library(gridExtra)
+```
+
+
+## Overview
+
+1. Motivation
+    + The phenomenon of the "Eurosceptic misfit"
+    + A gap in the research field
+2. Methodology
+    + The data set
+    + The statistical models
+3. Findings
+    + Eurosceptic misfit across time
+    + Eurosceptic misfit across regions
+    + Regression models
+4. Conclusion
+
+# 1. Motivation
+## The phenomenon of the "Eurosceptic misfit"
+
++ Wide gap between popular levels of Euroscepticism and the aggregate vote share received by Eurosceptic parties
++ First mentioned by Taggart (1998)
+    + He suspected the translation of Eurosceptic attitudes into Eurosceptic vote was driven by national contextual factors  
+  
+**Understanding national contextual drivers of the "Eurosceptic misfit" is a puzzle-piece in understanding the political impact of Eurosceptic parties**
+
+## A gap in the research field
+
++ Literature on Euroscepticism mainly revolves around:  
+    + Categorisation of Euroscepticism
+    + Derterminants of Euroscepticism
++ The Eurosceptic misfit has received no thorough scholarly attention outside a few mentions (e.g. Taggart & Sczerbiak, 2002; Verney (2011))
+
+**Possibility to make a contribution to an underdeveloped research field**
+
+# 2. Methodology
+
+## 2.1. The data set
+I created my own study data set from
+
+  + European Parliament election data from 1979 to 2009
+  + Eurobarometer data adjacent to each election round
+
++ This yielded a data set which had
+    + 110 observations  
+    + 27 panel units  
+    + 7 time periods  
+
+## 2.2. The statistical models
+
++ **Dependent variable**: share of voters holding Eurosceptic attitudes - sum of the vote share Eurosceptic parties  
+
++ **Independent variables**
+
+    + Two measures of Eurosceptic attitudes
+    + Party system polarisation
+    + Effective number of parties
+    + Membership duration in the EU
+    + Location in Central and Eastern Europe
+
++ Models
+    + Fixed effects, random effects (and pooled OLS)
+
+
+# 3. Findings
+## 3.1. Eurosceptic misfit across time
+```{r graph, include=TRUE, echo=FALSE, warning=FALSE, fig.height=3, fig.width = 4}
+ggplot(year_averages, aes(x = year)) +
+              geom_line(aes(y = EUS.avg, colour = "EUS.avg")) +
+              geom_line(aes(y = vote.avg, colour = "vote.avg")) +
+              geom_line(aes(y = diff.avg, colour = "diff.avg")) +
+scale_colour_discrete(name = "Euroscepticism variables", 
+                                 labels = c("Eurosceptic misfit", 
+                                            "Popular Euroscepticism",
+                                            "Eurosceptic vote share")) +
+  ylab("Variable value in %") + xlab("Year of EP election") + 
+  scale_x_continuous(breaks = c(1979, 1984, 1989, 1994, 1999, 2004, 2009)) +
+  geom_vline(xintercept = c(1981, 1995, 2004, 2007), alpha = 0.3) +
+  theme(legend.position="top", legend.title = element_blank(), 
+        legend.text = element_text(size = 6),
+        text = element_text(size = 6), axis.title.x = element_text(size = 7), 
+        axis.title.y = element_text(size = 7))
+```
+
+## 3.2. Eurosceptic misfit across regions 
+```{r creating_plots}
+NE.p <- ggplot(NE, aes(y = diff.EUS, x = cname)) + geom_bar(stat = "identity") +
+  ylab("Average Eurosceptic Misfit") + xlab("") +
+  expand_limits(y = c(-3, 28))+
+  theme(text = element_text(size = 5)) + ggtitle("Northern Europe")
+
+WE.p <- ggplot(WE, aes(y = diff.EUS, x = cname)) + geom_bar(stat = "identity") +
+  ylab("Average Eurosceptic Misfit") + xlab("")+
+  expand_limits(y = c(-3, 28))+
+  theme(text = element_text(size = 5)) + ggtitle("Western Europe")
+
+SE.p <- ggplot(SE, aes(y = diff.EUS, x = cname)) + geom_bar(stat = "identity") +
+  ylab("Average Eurosceptic Misfit") + xlab("")+ 
+  expand_limits(y = c(-3, 28))+
+  theme(text = element_text(size = 5)) + ggtitle("Southern Europe")
+
+CEE.p <- ggplot(CEE, aes(y = diff.EUS, x = cname)) + geom_bar(stat = "identity") +
+  ylab("Average Eurosceptic Misfit") + xlab("")+
+  expand_limits(y = c(-3, 28))+
+  theme(text = element_text(size = 5)) + ggtitle("Central/Eastern Europe")
+```
+
+```{r displaying_plot, include=TRUE, echo=FALSE, fig.height=3, fig.width = 4}
+grid.arrange(NE.p, WE.p, SE.p, CEE.p, nrow = 2)
+```
+
+## 3.3. Regression models
+```{r regression results, include=TRUE, echo=FALSE, warning=FALSE, results='asis'}
+stargazer(robust.fe, robust.re, title = "Regression results",  column.labels = c("FE", "RE"),
+          dep.var.labels = "Eurosceptic Misfit", covariate.labels = 
+            c("General Euroscepticism", "Instrumental Euroscepticism",
+              "Polarisation Index", "Effective Number of Parties", 
+              "Membership Duration", "Central/Eastern European"), digits = 2,
+          header = FALSE, font.size = "tiny")
+```
+
+## 4. Conclusion
+
++ The Eurosceptic misfit has stayed relatively constant over time, except for a spike in 1994
++ Eurosceptic misfit somewhat smaller in CEE countries
++ Eurosceptic vote share generally fails to "catch up" with increases in popular Eurosceptic attitudes
++ Higher degrees of party polarisation shrink the Eurosceptic misfit
+
+## Thank you for listening!
+
+Please check out my [Github repository](https://github.com/mberneaud/EuroscepticMisfitMasterThesis) for all source codes for the analysis and presentation documents:  
+
+_github.com/mberneaud/EuroscepticMisfitMasterThesis_
+
+## Extra: Model considerations 
+
++ Combination of pooled OLS, fixed effects and random effects models used in the thesis
+    + Fixed effects to cleanly isolate causal effects (read: removing unobserved heterogeneity) to measure country-specific variation
+    + Random effects to allow for inclusion of time-invariant variables (like region) and higher efficiency
+    + Pooled OLS for comparison
