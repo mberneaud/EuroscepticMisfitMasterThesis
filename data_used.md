@@ -18,7 +18,7 @@ I used the following Eurobarometers in my Analysis. All of them can be downloade
 
 ## Data on European parties and their policy stances and national European Parliament Election results
 ### [Euromanifesto Project at MZES Mannheim](https://dbk.gesis.org/dbksearch/sdesc2.asp?no=5102&db=e&doi=10.4232/1.5102)
-**the .dta file obtained from the link above goes into the `Analysis/Data/Euromanifesto folder`**
+**the .dta file obtained from the link above goes into the `Analysis/Data/Euromanifesto` folder**
 + Contains data on the positions of parties that participated in EU elections
 + from 1979 to 2009, so excludes last elections in 2014
 + straight-up codebook starts on page 83 (last chapter)
